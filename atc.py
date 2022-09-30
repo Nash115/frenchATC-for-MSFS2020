@@ -5,13 +5,19 @@ import sounddevice as sd
 import vosk
 import sys
 import json
+from colorama import Fore, Back, Style
 
 import atc_paroles as atc
 
 q = queue.Queue()
 
-callsign = input("Your callsign : ")
-clearance = ""
+callsign = input("Your callsign : " + Fore.BLUE)
+print(Style.RESET_ALL)
+clearance = "Aucune"
+lastClearance = "Aucune"
+ifNeedCollation = False
+frequency = "Ground"
+lastfrequency = "Ground"
 
 os.system("title ATC by Nash115")
 
@@ -27,6 +33,12 @@ def callback(indata, frames, time, status):
     if status:
         print(status, file=sys.stderr)
     q.put(bytes(indata))
+
+def printHead():
+    os.system('cls')
+    print('#' * 80)
+    print('Service ATC en fonction !'+ Fore.GREEN +' Bon vol !' + Style.RESET_ALL)
+    print('#' * 73 + Fore.RED +"NASH115"+Style.RESET_ALL)
 
 parser = argparse.ArgumentParser(add_help=False)
 parser.add_argument(
@@ -74,22 +86,37 @@ try:
 
     with sd.RawInputStream(samplerate=args.samplerate, blocksize = 8000, device=args.device, dtype='int16',
                             channels=1, callback=callback):
-            os.system('cls')
-            print('#' * 80)
-            print('Service ATC démarré avec succès ! Bon vol !')
-            print('#' * 73 + "NASH115")
+            printHead()
 
             rec = vosk.KaldiRecognizer(model, args.samplerate)
             while True:
                 data = q.get()
                 if rec.AcceptWaveform(data):
                     parler = json.loads(rec.FinalResult())
-                    if not(str(parler['text']) == ""):
-                        print(parler['text'])
-                        rep = atc.reconaissanceATC(str(parler['text']),callsign,clearance)
-                        if rep != "":
-                            clearance = rep
-                            print("Nouvelle Clearance : ", clearance)
+                    if not(str(parler['text']) == "")  and "fox" in str(parler['text']):
+                        os.popen("debut.wav")
+                        #print(parler['text'])
+                        if ifNeedCollation == False:
+                            rep = atc.reconaissanceATC(str(parler['text']),callsign,clearance,frequency)
+                            ifNeedCollation = rep[1]
+                            frequency = rep[2]
+                        else:
+                            #print("En attente de collation '" + ifNeedCollation + "' ... ")
+                            if ifNeedCollation in parler['text']:
+                                ifNeedCollation = False
+                                print(Back.GREEN +"Collationné"+Style.RESET_ALL)
+                                os.popen("collation.wav")
+                                if frequency != lastfrequency:
+                                    print( print(Back.BLUE +"Fréquence modifiée :" + frequency +Style.RESET_ALL))
+                                    lastfrequency = frequency
+                            else:
+                                print(Fore.RED +"Merci de collationner !"+Style.RESET_ALL)
+                        if rep[0] != "":
+                            clearance = rep[0]
+                            if clearance != lastClearance:
+                                print(Back.MAGENTA + "Nouvelle Clearance : " + clearance + Style.RESET_ALL)
+                                lastClearance = clearance
+                    #printHead()
                 
                 if dump_fn is not None:
                     dump_fn.write(data)

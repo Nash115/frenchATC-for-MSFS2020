@@ -3,12 +3,11 @@ from bs4 import BeautifulSoup
 
 actuTimeMetar = ""
 
-url = 'https://metar-taf.com/LFMD'
+def getMeteo(airport):
+    url = 'https://metar-taf.com/'+airport
 
-response = requests.get(url)
-soup = BeautifulSoup(response.text, features="html.parser")
-
-def getMeteo():
+    response = requests.get(url)
+    soup = BeautifulSoup(response.text, features="html.parser")
 
     actuTimeMetar = (soup.find('code')).text
 

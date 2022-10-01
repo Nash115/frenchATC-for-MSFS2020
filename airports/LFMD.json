@@ -1,0 +1,12 @@
+{
+    "name":"Cannes Mandelieu",
+    "OACI":"LFMD",
+    "runways":{
+        "17":["Papa Unité","Papa Deux","Alpha Unité","Alpha Deux"]
+    },
+    "frequency":{
+        "grd":"121 décimale 805",
+        "twr":"118 décimale 625",
+        "app":"None"
+    }
+}

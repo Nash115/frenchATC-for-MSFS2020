@@ -1,0 +1,13 @@
+{
+    "name":"Nice côte d'azur",
+    "OACI":"LFMN",
+    "runways":{
+        "04L":["Alpha Unité"],
+        "04R":["Quebec Trois","Whisky Trois"]
+    },
+    "frequency":{
+        "grd":"121 décimale 705",
+        "twr":"118 décimale 7",
+        "app":"130 décimale 830"
+    }
+}

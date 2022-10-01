@@ -12,21 +12,23 @@ import atc_paroles as atc
 q = queue.Queue()
 
 airport = input("OACI code of your airport :")
-read_json = "airports/" + airport + ".json"
-print(Fore.BLUE + "Fichier aéroport :" + read_json + Style.RESET_ALL)
+read_json = "assets/airports/" + airport + ".json"
 
 airportData = {}
 
 if not os.path.exists(read_json):
-    print(Fore.RED +"Le code OACI de l'aéroport saisi est inconnu. Vérifier l'ortographe.")
+    print(Fore.BLUE + "Fichier aéroport :" + read_json + Fore.RED + " inexistant..." + Style.RESET_ALL)
+    print(Fore.YELLOW +"Le code OACI de l'aéroport saisi est inconnu. Vérifier l'ortographe.")
     print("Si l'ortographe est correct, l'aéroport n'a pas été paramétré pour ce programme, vous pouvez le créer et lui donner le nom OACI correct." + Style.RESET_ALL)
     os.system("pause")
     exit()
 else:
     with open(read_json, "r") as json_file:
         airportData = json.load(json_file)
+    print(Fore.BLUE + "Fichier aéroport :" + read_json + Fore.GREEN + " chargé avec succès !" + Style.RESET_ALL)
+#pprint.pprint(airportData)
 
-print(Fore.RED +"ATC paramétré avec l'aéroport " + airportData["name"] + Style.RESET_ALL)
+print(Fore.GREEN +"ATC paramétré avec l'aéroport " + airportData["name"] + Style.RESET_ALL)
 
 callsign = input("Your callsign : " + Fore.BLUE)
 print(Style.RESET_ALL)
@@ -120,11 +122,13 @@ try:
                     if not(str(parler['text']) == "")  and "fox" in str(parler['text']):
                         os.popen("debut.wav")
                         #print(parler['text'])
-                        if ifNeedCollation == False or "répéter" in parler['text'] or "répétez" in parler['text'] or "répété" in parler['text']:
+                        if ifNeedCollation == False:
                             frequency = rep[2]
                             rep = atc.reconaissanceATC(str(parler['text']),callsign,clearance,frequency,airportData)
                             ifNeedCollation = rep[1]
                             frequency = rep[2]
+                        elif "répéter" in parler['text'] or "répétez" in parler['text'] or "répété" in parler['text']:
+                            os.popen("conv.mp3")
                         else:
                             #print("En attente de collation '" + ifNeedCollation + "' ... ")
                             if ifNeedCollation in parler['text'] or "copié" in parler['text'] or "copier" in parler['text']:

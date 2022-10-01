@@ -11,13 +11,32 @@ import atc_paroles as atc
 
 q = queue.Queue()
 
+airport = input("OACI code of your airport :")
+read_json = "airports/" + airport + ".json"
+print(Fore.BLUE + "Fichier aéroport :" + read_json + Style.RESET_ALL)
+
+airportData = {}
+
+if not os.path.exists(read_json):
+    print(Fore.RED +"Le code OACI de l'aéroport saisi est inconnu. Vérifier l'ortographe.")
+    print("Si l'ortographe est correct, l'aéroport n'a pas été paramétré pour ce programme, vous pouvez le créer et lui donner le nom OACI correct." + Style.RESET_ALL)
+    os.system("pause")
+    exit()
+else:
+    with open(read_json, "r") as json_file:
+        airportData = json.load(json_file)
+
+print(Fore.RED +"ATC paramétré avec l'aéroport " + airportData["name"] + Style.RESET_ALL)
+
 callsign = input("Your callsign : " + Fore.BLUE)
 print(Style.RESET_ALL)
-clearance = "Aucune"
-lastClearance = "Aucune"
+clearance = "sol"
+lastClearance = clearance
 ifNeedCollation = False
 frequency = "Ground"
-lastfrequency = "Ground"
+lastfrequency = frequency
+
+rep = [clearance,ifNeedCollation,frequency]
 
 os.system("title ATC by Nash115")
 
@@ -27,6 +46,8 @@ def int_or_str(text):
         return int(text)
     except ValueError:
         return text
+
+print(Fore.GREEN +' Démarrage des services en cours... Veuillez patienter...' + Style.RESET_ALL)
 
 def callback(indata, frames, time, status):
     """This is called (from a separate thread) for each audio block."""
@@ -45,6 +66,9 @@ parser.add_argument(
     '-l', '--list-devices', action='store_true',
     help='show list of audio devices and exit')
 args, remaining = parser.parse_known_args()
+
+print(Fore.GREEN +' Détection des périphériques... Veuillez patienter...' + Style.RESET_ALL)
+
 if args.list_devices:
     print(sd.query_devices())
     parser.exit(0)
@@ -96,13 +120,14 @@ try:
                     if not(str(parler['text']) == "")  and "fox" in str(parler['text']):
                         os.popen("debut.wav")
                         #print(parler['text'])
-                        if ifNeedCollation == False:
-                            rep = atc.reconaissanceATC(str(parler['text']),callsign,clearance,frequency)
+                        if ifNeedCollation == False or "répéter" in parler['text'] or "répétez" in parler['text'] or "répété" in parler['text']:
+                            frequency = rep[2]
+                            rep = atc.reconaissanceATC(str(parler['text']),callsign,clearance,frequency,airportData)
                             ifNeedCollation = rep[1]
                             frequency = rep[2]
                         else:
                             #print("En attente de collation '" + ifNeedCollation + "' ... ")
-                            if ifNeedCollation in parler['text']:
+                            if ifNeedCollation in parler['text'] or "copié" in parler['text'] or "copier" in parler['text']:
                                 ifNeedCollation = False
                                 print(Back.GREEN +"Collationné"+Style.RESET_ALL)
                                 os.popen("collation.wav")
@@ -110,7 +135,7 @@ try:
                                     print( print(Back.BLUE +"Fréquence modifiée :" + frequency +Style.RESET_ALL))
                                     lastfrequency = frequency
                             else:
-                                print(Fore.RED +"Merci de collationner !"+Style.RESET_ALL)
+                                print(Fore.RED +"Merci de collationner !"+Style.RESET_ALL + "("+ifNeedCollation+")")
                         if rep[0] != "":
                             clearance = rep[0]
                             if clearance != lastClearance:

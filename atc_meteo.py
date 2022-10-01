@@ -1,6 +1,7 @@
+# Version V0.3-2022-10-01
+
 import requests
 from bs4 import BeautifulSoup
-
 
 actuTimeMetar = ""
 

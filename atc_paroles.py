@@ -1,3 +1,5 @@
+# Version V0.3-2022-10-01
+
 from cgitb import text
 from gtts import gTTS
 import os

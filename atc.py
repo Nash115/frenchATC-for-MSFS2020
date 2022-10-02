@@ -1,4 +1,4 @@
-# Version V0.3-2022-10-01
+# Version V0.4.0-2022-10-02
 
 import argparse
 import os
@@ -25,7 +25,7 @@ if not os.path.exists(read_json):
     os.system("pause")
     exit()
 else:
-    with open(read_json, "r") as json_file:
+    with open(read_json, "r", encoding="utf-8") as json_file:
         airportData = json.load(json_file)
     print(Fore.BLUE + "Fichier aéroport :" + read_json + Fore.GREEN + " chargé avec succès !" + Style.RESET_ALL)
 #pprint.pprint(airportData)
@@ -142,6 +142,7 @@ try:
                                     lastfrequency = frequency
                             else:
                                 print(Fore.RED +"Merci de collationner !"+Style.RESET_ALL + "("+ifNeedCollation+")")
+                                print(parler['text'])
                         if rep[0] != "":
                             clearance = rep[0]
                             if clearance != lastClearance:
@@ -156,5 +157,3 @@ try:
 except KeyboardInterrupt:
     print('\nDone')
     parser.exit(0)
-except Exception as e:
-    parser.exit(type(e).__name__ + ': ' + str(e))

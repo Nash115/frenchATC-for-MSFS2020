@@ -1,8 +1,10 @@
-# Version V0.4.0-2022-10-02
+# Version V0.5.0-2022-10-02
 
 import argparse
+from cgi import test
 import os
 import queue
+from subprocess import call
 import sounddevice as sd
 import vosk
 import sys
@@ -12,6 +14,10 @@ from colorama import Fore, Back, Style
 import atc_paroles as atc
 
 q = queue.Queue()
+
+alphabet_min = "abcdefghijklmnopqrstuvwxyz"
+alphabet_maj = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+alphabetAero = ["alpha","bravo","charlie","delta","echo","fox","golf","hotel","india","juliet","kilo","lima","mike","november","oscar","papa","quebec","romeo","sierra","tango","uniform","victor","whisky","x-ray","yankee","zulu"]
 
 airport = input("OACI code of your airport :")
 read_json = "assets/airports/" + airport + ".json"
@@ -32,17 +38,53 @@ else:
 
 print(Fore.GREEN +"ATC paramétré avec l'aéroport " + airportData["name"] + Style.RESET_ALL)
 
-callsign = input("Your callsign : " + Fore.BLUE)
-print(Style.RESET_ALL)
+callsignD = input("Votre immatriculation (F-ABCD) : " + Fore.BLUE)
+callsign = ""
+carractsLettres = [0,4,5]
+caract = 0
+
+if len(callsignD) == 6 and "-" in callsignD:
+    for i in callsignD:
+        if i in alphabet_min and caract in carractsLettres:
+            callsign += alphabetAero[alphabet_min.index(i)]
+            callsign += " "
+        elif i in alphabet_maj and caract in carractsLettres:
+            callsign += alphabetAero[alphabet_maj.index(i)]
+            callsign += " "
+        caract += 1
+else:
+    print(Fore.RED + "Immatriculation invalide" + Style.RESET_ALL)
+    os.system("pause")
+    exit()
+
+print(Fore.BLUE + "Indicatif d'appel :" + callsign + Style.RESET_ALL)
+
+os.system("title ATC by Nash115 - " + airportData["OACI"] + " ("+callsignD+")")
+
+print(Fore.CYAN + "Frequencies :")
+print("🛩️ Ground : " + airportData["frequency"]["grd"][1])
+print("🛫 Tower  : " + airportData["frequency"]["twr"][1])
+print("✈️ Appr   : " + airportData["frequency"]["app"][1] + Style.RESET_ALL)
+
 clearance = "sol"
 lastClearance = clearance
 ifNeedCollation = False
-frequency = "Ground"
+
+tryFrequency = True
+while tryFrequency:
+    frequency = input("Frequency : " + Fore.BLUE)
+    if airportData["frequency"]["grd"][1] == frequency:
+        tryFrequency = False
+    elif airportData["frequency"]["twr"][1] == frequency:
+        tryFrequency = False
+    elif airportData["frequency"]["app"][1] == frequency:
+        tryFrequency = False
+    else:
+        print(Fore.RED + "FREQUENCE INVALIDE - COMMUNICATION IMPOSSIBLE" + Style.RESET_ALL)
+
 lastfrequency = frequency
 
 rep = [clearance,ifNeedCollation,frequency]
-
-os.system("title ATC by Nash115")
 
 def int_or_str(text):
     """Helper function for argument parsing."""
@@ -62,8 +104,8 @@ def callback(indata, frames, time, status):
 def printHead():
     os.system('cls')
     print('#' * 80)
-    print('Service ATC en fonction !'+ Fore.GREEN +' Bon vol !' + Style.RESET_ALL)
-    print('#' * 73 + Fore.RED +"NASH115"+Style.RESET_ALL)
+    print("#" + 'Service ATC en fonction !'+ Fore.GREEN +' Bon vol !' + Style.RESET_ALL + ((27-len(frequency))*" ") + Back.CYAN + Fore.BLACK + " " + callsignD + " " + Style.RESET_ALL + " " + Back.BLUE + " " + frequency + " mHz " + Style.RESET_ALL + " #")
+    print('#' * 80)
 
 parser = argparse.ArgumentParser(add_help=False)
 parser.add_argument(
@@ -120,29 +162,30 @@ try:
             while True:
                 data = q.get()
                 if rec.AcceptWaveform(data):
-                    parler = json.loads(rec.FinalResult())
-                    if not(str(parler['text']) == "")  and "fox" in str(parler['text']):
+                    pilot = json.loads(rec.FinalResult())
+                    if not(str(pilot['text']) == "")  and "fox" in str(pilot['text']):
                         os.popen("debut.wav")
-                        #print(parler['text'])
+                        #print(pilot['text'])
                         if ifNeedCollation == False:
                             frequency = rep[2]
-                            rep = atc.reconaissanceATC(str(parler['text']),callsign,clearance,frequency,airportData)
+                            rep = atc.reconaissanceATC(str(pilot['text']),callsign,clearance,frequency,airportData)
                             ifNeedCollation = rep[1]
                             frequency = rep[2]
-                        elif "répéter" in parler['text'] or "répétez" in parler['text'] or "répété" in parler['text']:
+                        elif "répéter" in pilot['text'] or "répétez" in pilot['text'] or "répété" in pilot['text']:
                             os.popen("conv.mp3")
                         else:
                             #print("En attente de collation '" + ifNeedCollation + "' ... ")
-                            if ifNeedCollation in parler['text'] or "copié" in parler['text'] or "copier" in parler['text']:
+                            if ifNeedCollation in pilot['text'] or "copié" in pilot['text'] or "copier" in pilot['text']:
                                 ifNeedCollation = False
                                 print(Back.GREEN +"Collationné"+Style.RESET_ALL)
                                 os.popen("collation.wav")
                                 if frequency != lastfrequency:
-                                    print( print(Back.BLUE +"Fréquence modifiée :" + frequency +Style.RESET_ALL))
+                                    print(Back.BLUE +"Fréquence modifiée :" + frequency +Style.RESET_ALL)
                                     lastfrequency = frequency
+                                    printHead()
                             else:
                                 print(Fore.RED +"Merci de collationner !"+Style.RESET_ALL + "("+ifNeedCollation+")")
-                                print(parler['text'])
+                                print(pilot['text'])
                         if rep[0] != "":
                             clearance = rep[0]
                             if clearance != lastClearance:

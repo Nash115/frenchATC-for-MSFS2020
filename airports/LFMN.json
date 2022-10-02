@@ -1,9 +1,13 @@
 {
     "name":"Nice côte d'azur",
     "OACI":"LFMN",
+    "rwyTakeoff":"04R",
+    "rwyLanding":"04L",
     "runways":{
-        "04L":["Alpha Unité"],
-        "04R":["Quebec Trois","Whisky Trois"]
+        "04L":["alpha unité"],
+        "04R":["quebec trois","whisky trois"],
+        "22L":["hotel trois"],
+        "22R":["juliet unité"]
     },
     "frequency":{
         "grd":"121 décimale 705",

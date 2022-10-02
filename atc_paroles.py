@@ -1,4 +1,4 @@
-## Version V0.4.0-2022-10-02
+## Version V0.5.0-2022-10-02
 
 from cgitb import text
 from gtts import gTTS
@@ -16,7 +16,7 @@ def reconaissanceATC(pilot,callsign,clr,frequency,airportData):
 
 
 
-    if frequency_f == "Ground": ### FREQUENCE SOL ###
+    if frequency_f == airportData["frequency"]["grd"][1]: ### FREQUENCE SOL ###
         #Premier contact
         if "bonjour" in pilot:
             texte = callsign + " bonjour, transmettez"
@@ -37,9 +37,9 @@ def reconaissanceATC(pilot,callsign,clr,frequency,airportData):
 
         #Shoot a la tour
         elif "point d'arrêt" in pilot:
-            texte = callsign + " contactez la tour "+ airportData["frequency"]["twr"] +", au revoir"
+            texte = callsign + " contactez la tour "+ str(airportData["frequency"]["twr"][0]) +", au revoir"
             needCollation = "tour"
-            frequency_f = "Tower"
+            frequency_f = airportData["frequency"]["twr"][1]
 
         #Roulage parking
         elif "parking" in pilot and clearance == "sol":
@@ -53,7 +53,7 @@ def reconaissanceATC(pilot,callsign,clr,frequency,airportData):
 
 
 
-    elif frequency_f == "Tower": ###FREQUENCE TOUR ###
+    elif frequency_f == airportData["frequency"]["twr"][1]: ###FREQUENCE TOUR ###
         #aligner et décoller
         if "point d'arrêt" in pilot:
             if clearance == "tourDePiste":
@@ -95,7 +95,7 @@ def reconaissanceATC(pilot,callsign,clr,frequency,airportData):
                 needCollation = "autorisé atterrissage"
                 clearance = "atteri"
 
-        #Contact sol
+        #Annuler les intensions
         elif "annul" in pilot:
             if clearance == "air":
                     texte = callsign + " décollage annulé, sortez par la première voie de circulation et rappelez piste dégagée."
@@ -108,10 +108,10 @@ def reconaissanceATC(pilot,callsign,clr,frequency,airportData):
             
         #Contact sol
         elif "piste" in pilot and "dégag" in pilot and clearance == "atteri":
-            texte = callsign + " contactez le sol "+ airportData["frequency"]["grd"] +", au revoir"
+            texte = callsign + " contactez le sol "+ str(airportData["frequency"]["grd"][0]) +", au revoir"
             needCollation = "sol"
             clearance = "sol"
-            frequency_f = "Ground"
+            frequency_f = airportData["frequency"]["grd"][1]
         
 
 

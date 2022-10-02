@@ -1,4 +1,4 @@
-# Version V0.3-2022-10-01
+# Version V0.4.0-2022-10-02
 
 import requests
 from bs4 import BeautifulSoup

@@ -1,4 +1,4 @@
-## Version V0.5.0-2022-10-02
+# Version V0.6.0-2022-10-04
 
 from cgitb import text
 from gtts import gTTS
@@ -7,7 +7,6 @@ import atc_meteo
 from random import randint
 
 def reconaissanceATC(pilot,callsign,clr,frequency,airportData):
-    frequency_f = frequency
     needCollation = False
     clearance = clr
     texte = callsign + ", je n'ai pas compris votre demande, pouvez vous répéter ?"
@@ -16,7 +15,7 @@ def reconaissanceATC(pilot,callsign,clr,frequency,airportData):
 
 
 
-    if frequency_f == airportData["frequency"]["grd"][1]: ### FREQUENCE SOL ###
+    if frequency == airportData["frequency"]["grd"][1]: ### FREQUENCE SOL ###
         #Premier contact
         if "bonjour" in pilot:
             texte = callsign + " bonjour, transmettez"
@@ -39,7 +38,6 @@ def reconaissanceATC(pilot,callsign,clr,frequency,airportData):
         elif "point d'arrêt" in pilot:
             texte = callsign + " contactez la tour "+ str(airportData["frequency"]["twr"][0]) +", au revoir"
             needCollation = "tour"
-            frequency_f = airportData["frequency"]["twr"][1]
 
         #Roulage parking
         elif "parking" in pilot and clearance == "sol":
@@ -53,7 +51,7 @@ def reconaissanceATC(pilot,callsign,clr,frequency,airportData):
 
 
 
-    elif frequency_f == airportData["frequency"]["twr"][1]: ###FREQUENCE TOUR ###
+    elif frequency == airportData["frequency"]["twr"][1]: ###FREQUENCE TOUR ###
         #aligner et décoller
         if "point d'arrêt" in pilot:
             if clearance == "tourDePiste":
@@ -111,7 +109,6 @@ def reconaissanceATC(pilot,callsign,clr,frequency,airportData):
             texte = callsign + " contactez le sol "+ str(airportData["frequency"]["grd"][0]) +", au revoir"
             needCollation = "sol"
             clearance = "sol"
-            frequency_f = airportData["frequency"]["grd"][1]
         
 
 
@@ -124,4 +121,4 @@ def reconaissanceATC(pilot,callsign,clr,frequency,airportData):
     textS = gTTS(text=texte, lang="fr", slow=False)
     textS.save("conv.mp3")
     os.popen("conv.mp3")
-    return clearance,needCollation,frequency_f
+    return clearance,needCollation

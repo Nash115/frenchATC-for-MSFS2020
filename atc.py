@@ -1,4 +1,4 @@
-# Version V0.5.0-2022-10-02
+# Version V0.6.0-2022-10-04
 
 import argparse
 from cgi import test
@@ -10,8 +10,9 @@ import vosk
 import sys
 import json
 from colorama import Fore, Back, Style
-
 import atc_paroles as atc
+import atc_frequency
+
 
 q = queue.Queue()
 
@@ -70,18 +71,19 @@ clearance = "sol"
 lastClearance = clearance
 ifNeedCollation = False
 
-tryFrequency = True
-while tryFrequency:
-    frequency = input("Frequency : " + Fore.BLUE)
-    if airportData["frequency"]["grd"][1] == frequency:
-        tryFrequency = False
-    elif airportData["frequency"]["twr"][1] == frequency:
-        tryFrequency = False
-    elif airportData["frequency"]["app"][1] == frequency:
-        tryFrequency = False
-    else:
-        print(Fore.RED + "FREQUENCE INVALIDE - COMMUNICATION IMPOSSIBLE" + Style.RESET_ALL)
+# tryFrequency = True
+# while tryFrequency:
+#     frequency = input("Frequency : " + Fore.BLUE)
+#     if airportData["frequency"]["grd"][1] == frequency:
+#         tryFrequency = False
+#     elif airportData["frequency"]["twr"][1] == frequency:
+#         tryFrequency = False
+#     elif airportData["frequency"]["app"][1] == frequency:
+#         tryFrequency = False
+#     else:
+#         print(Fore.RED + "FREQUENCE INVALIDE - COMMUNICATION IMPOSSIBLE" + Style.RESET_ALL)
 
+frequency = str(atc_frequency.getFrequency(airportData["frequency"]["grd"][1]))
 lastfrequency = frequency
 
 rep = [clearance,ifNeedCollation,frequency]
@@ -160,6 +162,12 @@ try:
 
             rec = vosk.KaldiRecognizer(model, args.samplerate)
             while True:
+                frequency = str(atc_frequency.getFrequency(frequency))
+                if frequency != lastfrequency:
+                    print(Back.BLUE +"Fréquence modifiée :" + frequency +Style.RESET_ALL)
+                    lastfrequency = frequency
+                    printHead()
+
                 data = q.get()
                 if rec.AcceptWaveform(data):
                     pilot = json.loads(rec.FinalResult())
@@ -167,10 +175,8 @@ try:
                         os.popen("debut.wav")
                         #print(pilot['text'])
                         if ifNeedCollation == False:
-                            frequency = rep[2]
                             rep = atc.reconaissanceATC(str(pilot['text']),callsign,clearance,frequency,airportData)
                             ifNeedCollation = rep[1]
-                            frequency = rep[2]
                         elif "répéter" in pilot['text'] or "répétez" in pilot['text'] or "répété" in pilot['text']:
                             os.popen("conv.mp3")
                         else:
@@ -179,10 +185,6 @@ try:
                                 ifNeedCollation = False
                                 print(Back.GREEN +"Collationné"+Style.RESET_ALL)
                                 os.popen("collation.wav")
-                                if frequency != lastfrequency:
-                                    print(Back.BLUE +"Fréquence modifiée :" + frequency +Style.RESET_ALL)
-                                    lastfrequency = frequency
-                                    printHead()
                             else:
                                 print(Fore.RED +"Merci de collationner !"+Style.RESET_ALL + "("+ifNeedCollation+")")
                                 print(pilot['text'])

@@ -1,4 +1,4 @@
-# frenchATC
+# French ATC for MSFS2020
 
 Pour utiliser cet outil, téléchargez tout les fichiers et dossiers,et placez-les dans le dossier de votre choix.
 

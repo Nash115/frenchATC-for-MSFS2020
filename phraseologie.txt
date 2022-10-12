@@ -4,6 +4,9 @@ NB : L'immatriculation de l'avion doit impérativement être sous la forme F-ABC
 Nous prenons comme exemple un avion immatriculé F-NASH, son callsign est donc "Fox Sierra Hotel", un avion de type Cessna 152.
 Notez que les messages marqués d'un {C} signifie qu'il nécessite un collationnement après la réponste de l'ATC !
 
+! UNE PRONONCIATION CORRECTE AVEC UNE BONNE ARTICULATION EST NECESSAIRE POUR LA BONNE COMPREHENSION PAR LE PROGRAMME !
+
+
 GRD----------------------------------------------------------------------------------------------------------------------------
 Après avoir rentré la fréquence sol de votre aéroprt / aérodrome :
 
@@ -16,6 +19,10 @@ Départ simple   : * [Fox Sierra Hotel]  un Cessna 152, 2 personnes à bord, pou
 
 Une fois au point d'arret indiqué par le controlleur :
 * [Fox Sierra Hotel]  au point d'arrêt * {C}
+
+Roulage pour le parking :
+* [Fox Sierra Hotel]  pour le parking * {C}
+
 
 TWR----------------------------------------------------------------------------------------------------------------------------
 Après avoir rentré la fréquence tour de votre aéroprt / aérodrome :
@@ -31,3 +38,8 @@ Vous etes en étape de base :
 
 Vous etes en finale :
 Aterrissage simple (tour de piste complet) : * [Fox Sierra Hotel]  en finale * {C}
+Touché (touch n go) : * [Fox Sierra Hotel]  en finale pour un touché * {C}
+Passage bas : * [Fox Sierra Hotel]  en finale pour un passage bas * {C}
+
+Une fois la piste dégagée après avoir atteri :
+* [Fox Sierra Hotel]  piste dégagée * {C}

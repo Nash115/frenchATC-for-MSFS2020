@@ -1,0 +1,33 @@
+Ce fichier est un fichier d'aide nécessaire à la bonne utilisation du sol.
+
+NB : L'immatriculation de l'avion doit impérativement être sous la forme F-ABCD avec comme pays d'immat la France  (F) !
+Nous prenons comme exemple un avion immatriculé F-NASH, son callsign est donc "Fox Sierra Hotel", un avion de type Cessna 152.
+Notez que les messages marqués d'un {C} signifie qu'il nécessite un collationnement après la réponste de l'ATC !
+
+GRD----------------------------------------------------------------------------------------------------------------------------
+Après avoir rentré la fréquence sol de votre aéroprt / aérodrome :
+
+Premier contact :
+* [Fox Sierra Hotel] bonjour *
+
+Annonce des intensions de vol :
+Tours de pistes : * [Fox Sierra Hotel]  un Cessna 152, 2 personnes à bord, pour des tours de pistes * {C}
+Départ simple   : * [Fox Sierra Hotel]  un Cessna 152, 2 personnes à bord, pour un départ dans l'axe * {C}
+
+Une fois au point d'arret indiqué par le controlleur :
+* [Fox Sierra Hotel]  au point d'arrêt * {C}
+
+TWR----------------------------------------------------------------------------------------------------------------------------
+Après avoir rentré la fréquence tour de votre aéroprt / aérodrome :
+
+Vous etes au point d'arret et pret au départ :
+* [Fox Sierra Hotel]  au point d'arrêt, prêt au départ * {C}
+
+Vous etes en vent arrière :
+* [Fox Sierra Hotel]  en vent arrière * {C}
+
+Vous etes en étape de base :
+* [Fox Sierra Hotel]  en base * {C}
+
+Vous etes en finale :
+Aterrissage simple (tour de piste complet) : * [Fox Sierra Hotel]  en finale * {C}

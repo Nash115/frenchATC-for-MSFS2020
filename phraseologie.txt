@@ -42,5 +42,5 @@ Aterrissage simple (tour de piste complet) : * [Fox Sierra Hotel]  en finale * {
 Touché (touch n go) : * [Fox Sierra Hotel]  en finale pour un touché * {C}
 Passage bas : * [Fox Sierra Hotel]  en finale pour un passage bas * {C}
 
-Une fois la piste dégagée après avoir atteri :
+Une fois la piste dégagée après avoir atterri :
 * [Fox Sierra Hotel]  piste dégagée * {C}

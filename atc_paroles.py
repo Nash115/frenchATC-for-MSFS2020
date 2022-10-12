@@ -82,9 +82,11 @@ def reconaissanceATC(pilot,callsign,clr,frequency,airportData):
 
         elif "vent arrière" in pilot and clearance == "air":
             texte = callsign + " rappelez en étape de base"
+            needCollation = "base"
 
         elif "base" in pilot and clearance == "air":
             texte = callsign + " rappelez en finale"
+            needCollation = "finale"
 
         #Clearance atérissages touchés & passages bas
         elif "finale" in pilot:

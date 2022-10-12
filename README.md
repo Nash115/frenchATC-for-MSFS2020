@@ -2,6 +2,8 @@
 
 ! Cet outil est disponible uniquement en Français. Une phraséologie correcte et l'emploi de certains mots clés sont nécessaires pour le bon fonctionnement de l'ATC.
 
+Le fichier "phraséologie.txt" vous permet de connaitre les mots à employer pour utiliser correctement le programme.
+
 -----
 
 *Un outil est disponible pour télécharger les librairies python nécessaires à l'utilisation de ce programme. Pour l'utiliser, lancez le fichier "librairies_installer"*

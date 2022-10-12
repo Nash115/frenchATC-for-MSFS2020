@@ -27,6 +27,9 @@ Ou un fichier plus petit mais pouvant altérer l'utilisation de la reconaissance
 # Si le fichier concernant votre aéroport / aérodrome n'existe pas :
 
 Vous pouvez le créer !
+
 Dans le dossier assets puis dans airports, vous trouverez des aéroports.
+
 Pour créer le votre, copier le fichier "example.json" et modifiez le avec les informations de votre aéroport.
+
 *N'oubliez pas de nommer votre fichier avec le code OACI de votre aéroport avec l'extension .json (ex: "LFPO.json")*

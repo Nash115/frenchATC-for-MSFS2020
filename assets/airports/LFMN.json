@@ -10,8 +10,8 @@
         "22R":["juliet unité"]
     },
     "frequency":{
-        "grd":"121 décimale 705",
-        "twr":"118 décimale 7",
-        "app":"130 décimale 830"
+        "grd":["121 décimale 705","121.705"],
+        "twr":["118 décimale 7","118.700"],
+        "app":["130 décimale 830","130.830"]
     }
 }

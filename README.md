@@ -1,16 +1,18 @@
 # French ATC for MSFS2020
 
-! Cet outil est disponible uniquement en Français. Une phraséologie correcte et l'emploi de certains mots clés sont nécessaires pour le bon fonctionnement de l'ATC.
+Cet outil est disponible uniquement en Français. Une phraséologie correcte et l'emploi de certains mots clés sont nécessaires pour le bon fonctionnement de l'ATC.
+
+Cet outil à été testé sur Microsoft Flight Simulator 2020
 
 * **Le fichier "phraséologie.txt" vous permet de connaitre les mots à employer pour utiliser correctement le programme.**
 
 -----
 
-* **Le logiciel Python 3 est INDISPENSABLE pour le fonctionnement de cet outil, si vous n'avez pas python 3 d'installé, rendez vous sur : https://www.python.org/downloads/**
+* **Le logiciel [Python 3](https://www.python.org/downloads/) est INDISPENSABLE pour le fonctionnement de cet outil !**
 
 -----
 
-* **Pour utiliser cet outil, téléchargez la dernière version à l'adresse : [ici](https://github.com/Nash115/frenchATC-for-MSFS2020/releases)**
+* **Pour utiliser cet outil, téléchargez la dernière version [ici](https://github.com/Nash115/frenchATC-for-MSFS2020/releases)**
 
 Une fois téléchargé :
 * *Un outil est disponible pour télécharger les librairies python nécessaires à l'utilisation de ce programme. Pour l'utiliser, lancez le fichier "librairies_installer.bat"*

@@ -1,4 +1,4 @@
-# Version V0.6.0-2022-10-04
+# Version V0.6.0-2022-10-12
 
 from cgitb import text
 from gtts import gTTS
@@ -47,6 +47,17 @@ def reconaissanceATC(pilot,callsign,clr,frequency,airportData):
         #Quitter la fréquence
         elif "quitter la fréquence" in pilot:
             texte = callsign + " vous pouvez quitter la fréquence, au revoir"
+            
+        #Annuler les intensions
+        elif "annul" in pilot:
+            if clearance == "air":
+                    texte = callsign + " décollage annulé, sortez par la première voie de circulation et rappelez piste dégagée."
+                    needCollation = "rappel"
+                    clearance = "sol"
+            elif clearance == "atteri":
+                texte = callsign + " atterissage annulé."
+                needCollation = "atterissage"
+                clearance = "air"
 
 
 

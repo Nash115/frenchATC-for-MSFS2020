@@ -1,4 +1,4 @@
-# Version V0.6.0-2022-10-04
+# Version : 2022-10-12
 
 from SimConnect import *
 

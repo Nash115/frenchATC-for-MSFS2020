@@ -1,4 +1,4 @@
-# Version V0.6.0-2022-10-12
+# Version : 2022-10-12
 
 from cgitb import text
 from gtts import gTTS

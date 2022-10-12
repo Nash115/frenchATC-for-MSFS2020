@@ -1,0 +1,2 @@
+Model file :
+https://alphacephei.com/vosk/models

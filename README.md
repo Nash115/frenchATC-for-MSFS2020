@@ -1,11 +1,18 @@
 # French ATC for MSFS2020
 
+! Cet outil est disponible uniquement en Français. Une phraséologie correcte et l'emploi de certains mots clés sont nécessaires pour le bon fonctionnement de l'ATC.
+
+-----
+
+*Un outil est disponible pour télécharger les librairies python nécessaires à l'utilisation de ce programme. Pour l'utiliser, lancez le fichier "librairies_installer"*
+
+-----
+
 Pour utiliser cet outil, téléchargez tout les fichiers et dossiers,et placez-les dans le dossier de votre choix.
 
 Pour lancer le programme, ouvrez le fichier "atc.py" avec python 3
 
-----------
-*Un outil est disponible pour télécharger les librairies python nécessaires à l'utilisation de ce programme. Pour l'utiliser, lancez le fichier "librairies_installer"*
+-----
 
 # N'oubliez pas de téléchanger un modèle de reconaissance vocale en français à l'adresse https://alphacephei.com/vosk/models.
 Ou télécharger le modèle directement en cliquant sur : https://alphacephei.com/vosk/models/vosk-model-fr-0.22.zip (1.5Go)

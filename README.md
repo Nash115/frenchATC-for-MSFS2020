@@ -21,3 +21,11 @@ Ou télécharger le modèle directement en cliquant sur : https://alphacephei.co
 Ou un fichier plus petit mais pouvant altérer l'utilisation de la reconaissance vocale directement par ce lien : https://alphacephei.com/vosk/models/vosk-model-small-fr-0.22.zip (41Mo)
 
 Une fois téléchargé, extraire le dossier dans un dossier "model" à l'emplacement des autres fichiers du programme
+
+-----
+
+# Si le fichier concernant votre aéroport / aérodrome n'existe pas :
+
+Vous pouvez le créer !
+Dans le dossier assets puis dans airports, vous trouverez des aéroports.
+Pour créer le votre, copier le fichier "example.json" et modifiez le avec les informations de votre aéroport.

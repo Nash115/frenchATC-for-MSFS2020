@@ -1,0 +1,14 @@
+{
+    "name":"Nom de l'aéroport",
+    "OACI":"Code OACI de l'aéroport (exemple : LFMN)",
+    "rwyTakeoff":"piste dédiée aux décollages",
+    "rwyLanding":"piste dédiée aux aterrissages",
+    "runways":{
+        "piste":["point d'arret n°1","point d'arret n°2"]
+    },
+    "frequency":{
+        "grd":["prononciation fréquence sol (ex: 121 décimale 805)","fréquence sol (ex: 121.805)"],
+        "twr":["prononciation","118.625"],
+        "app":["prononciation (ex: None si non existant)","fréquence (ex: 000.000 si non existant)"]
+    }
+}

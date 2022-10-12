@@ -7,12 +7,13 @@
 -----
 
 * **Le logiciel Python 3 est INDISPENSABLE pour le fonctionnement de cet outil, si vous n'avez pas python 3 d'installé, rendez vous sur : https://www.python.org/downloads/**
-* *Un outil est disponible pour télécharger les librairies python nécessaires à l'utilisation de ce programme. Pour l'utiliser, lancez le fichier "librairies_installer"*
 
 -----
 
 * **Pour utiliser cet outil, téléchargez la dernière version à l'adresse : https://github.com/Nash115/frenchATC-beta/releases**
-* Pour lancer le programme, ouvrez le fichier "atc.py" avec python 3
+Une fois téléchargé :
+* *Un outil est disponible pour télécharger les librairies python nécessaires à l'utilisation de ce programme. Pour l'utiliser, lancez le fichier "librairies_installer.bat"*
+* Pour lancer le programme, ouvrez le fichier "atc.py" avec python 3 **après avoir lancé Flight Simulator**
 
 -----
 

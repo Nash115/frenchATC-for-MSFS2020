@@ -1,4 +1,4 @@
-# Version : 2022-10-12
+# Version : 2022-10-13
 
 from cgitb import text
 from gtts import gTTS
@@ -55,8 +55,8 @@ def reconaissanceATC(pilot,callsign,clr,frequency,airportData):
                     needCollation = "rappel"
                     clearance = "sol"
             elif clearance == "atteri":
-                texte = callsign + " atterissage annulé."
-                needCollation = "atterissage"
+                texte = callsign + " atterrissage annulé."
+                needCollation = "atterrissage"
                 clearance = "air"
 
 
@@ -90,7 +90,7 @@ def reconaissanceATC(pilot,callsign,clr,frequency,airportData):
 
         #Clearance atérissages touchés & passages bas
         elif "finale" in pilot:
-            if "touché" in pilot and clearance == "air":
+            if "touch" in pilot and clearance == "air":
                 meteoPrise = atc_meteo.getMeteo(airportData["OACI"])
                 texte = callsign + " autorisé touché piste "+ str([airportData["rwyLanding"]]) +", vent " + str(meteoPrise[0])  + " degrés, " + str(meteoPrise[1]) + " noeuds."
                 needCollation = "autorisé"
@@ -113,8 +113,8 @@ def reconaissanceATC(pilot,callsign,clr,frequency,airportData):
                     needCollation = "rappel"
                     clearance = "sol"
             elif clearance == "atteri":
-                texte = callsign + " atterissage annulé."
-                needCollation = "atterissage"
+                texte = callsign + " atterrissage annulé."
+                needCollation = "atterrissage"
                 clearance = "air"
             
         #Contact sol

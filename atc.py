@@ -44,7 +44,7 @@ callsign = ""
 carractsLettres = [0,4,5]
 caract = 0
 
-if len(callsignD) == 6 and "-" in callsignD:
+if len(callsignD) == 6 and "-" in callsignD and (callsignD[0] == "F" or callsignD == "f"):
     for i in callsignD:
         if i in alphabet_min and caract in carractsLettres:
             callsign += alphabetAero[alphabet_min.index(i)]
@@ -66,6 +66,8 @@ print(Fore.CYAN + "Frequencies :")
 print("🛩️ Ground : " + airportData["frequency"]["grd"][1])
 print("🛫 Tower  : " + airportData["frequency"]["twr"][1])
 print("✈️ Appr   : " + airportData["frequency"]["app"][1] + Style.RESET_ALL)
+
+authFrequencies = [airportData["frequency"]["grd"][1],airportData["frequency"]["twr"][1],airportData["frequency"]["app"][1]]
 
 clearance = "sol"
 lastClearance = clearance
@@ -106,7 +108,10 @@ def callback(indata, frames, time, status):
 def printHead():
     os.system('cls')
     print('#' * 80)
-    print("#" + 'Service ATC en fonction !'+ Fore.GREEN +' Bon vol !' + Style.RESET_ALL + ((27-len(frequency))*" ") + Back.CYAN + Fore.BLACK + " " + callsignD + " " + Style.RESET_ALL + " " + Back.BLUE + " " + frequency + " mHz " + Style.RESET_ALL + " #")
+    if frequency in authFrequencies:
+        print("#" + 'Service ATC en fonction !'+ Fore.GREEN +' Bon vol !' + Style.RESET_ALL + ((27-len(frequency))*" ") + Back.CYAN + Fore.BLACK + " " + callsignD + " " + Style.RESET_ALL + " " + Back.BLUE + " " + frequency + " mHz " + Style.RESET_ALL + " #")
+    else:
+        print("#" + 'Service ATC en fonction !'+ Fore.GREEN +' Bon vol !' + Style.RESET_ALL + ((27-len(airportData["frequency"]["grd"][1])-4)*" ") + Back.CYAN + Fore.BLACK + " " + callsignD + " " + Style.RESET_ALL + " " + Back.RED + " GRD:" + airportData["frequency"]["grd"][1] + " mHz " + Style.RESET_ALL + " #")
     print('#' * 80)
 
 parser = argparse.ArgumentParser(add_help=False)

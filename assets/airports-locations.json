@@ -1,0 +1,6 @@
+[
+	{"latitude1":43.563454,"longitude1":6.929432,"latitude2":43.536873,"longitude2":6.970996,"altitudeMin":-999,"altitudeMax":200,"OACI":"LFMD","type":"grd"},
+	{"latitude1":43.637908,"longitude1":6.807795,"latitude2":43.406165,"longitude2":7.098162,"altitudeMin":-999,"altitudeMax":5000,"OACI":"LFMD","type":"twr"},
+
+	{"latitude1":43.768310,"longitude1":6.983973,"latitude2":43.430006,"longitude2":7.454954,"altitudeMin":-999,"altitudeMax":50000,"OACI":"LFMN","type":"all"}
+]

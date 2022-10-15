@@ -33,3 +33,10 @@ Pour créer le votre, copier le fichier "example.json" et modifiez le avec les i
 -----
 
 Notez que ce projet est créé par un passionné et non par un professionnel. Il peut donc contenir des erreurs, des imprécisions ou du manque de réalisme...
+
+-----
+
+## Ajouts en cours de créations :
+
+* Gestion de la position de l'avion pour ainsi permettre une détection automatique de l'aéroport actuel et permettre une navigation libre sur l'ensemble du globe sans avoir à redémarrer le logiciel. Cet ajout nécéssitera donc, comme dans une situation réelle, de changer de fréquence. Les fréquences des aéroports ne sont doc pas accessibles partout !
+ **[Cet ajout est en cours de création et sera disponible dans les plus brefs délais ! Merci de votre patience]**

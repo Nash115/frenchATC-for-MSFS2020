@@ -85,7 +85,7 @@ ifNeedCollation = False
 #     else:
 #         print(Fore.RED + "FREQUENCE INVALIDE - COMMUNICATION IMPOSSIBLE" + Style.RESET_ALL)
 
-frequency = str(atc_frequency.getFrequency(airportData["frequency"]["grd"][1]))
+frequency = str(atc_fs.getFrequency(airportData["frequency"]["grd"][1]))
 lastfrequency = frequency
 
 rep = [clearance,ifNeedCollation,frequency]
@@ -167,7 +167,7 @@ try:
 
             rec = vosk.KaldiRecognizer(model, args.samplerate)
             while True:
-                frequency = str(atc_frequency.getFrequency(frequency))
+                frequency = str(atc_fs.getFrequency(frequency))
                 if frequency != lastfrequency:
                     print(Back.BLUE +"Fréquence modifiée :" + frequency +Style.RESET_ALL)
                     lastfrequency = frequency

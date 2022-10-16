@@ -37,6 +37,6 @@ Pour créer le votre, copier le fichier "example.json" et modifiez le avec les i
 -----
 
 Notez que ce projet est créé par un passionné et non par un professionnel. Il peut donc contenir des erreurs, des imprécisions ou du manque de réalisme...
------
 
+-----
 Vous pouvez voir les ajouts en création [ici](https://github.com/Nash115/frenchATC-for-MSFS2020/discussions/categories/announcements)

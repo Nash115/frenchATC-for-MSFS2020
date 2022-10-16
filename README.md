@@ -26,7 +26,10 @@ Une fois téléchargé :
 
 # Si le fichier concernant votre aéroport / aérodrome n'existe pas :
 
-**Vous pouvez le créer !**
+* **Si vous n'avez pas les compétences pour le créer :**
+Demmandez à ce que quelqu'un le crée pour vous gratuitement [ici](https://github.com/Nash115/frenchATC-for-MSFS2020/discussions/new?category=need-a-new-airport)
+
+* **Sinon, vous pouvez le créer !**
 
 Dans le dossier assets puis dans airports, vous trouverez des aéroports.
 

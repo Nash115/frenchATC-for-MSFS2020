@@ -12,11 +12,14 @@ Cet outil est disponible uniquement en Français et compatible avec Microsoft Fl
 
 
 * **Le logiciel [Python 3](https://www.python.org/downloads/) est INDISPENSABLE pour l'exécution du programme !**
+
 * **Pour utiliser cet outil, téléchargez la dernière version [ici](https://github.com/Nash115/frenchATC-for-MSFS2020/releases)**
 
 Une fois téléchargé :
 * *Téléchargez les librairies python nécessaires à l'utilisation de ce programme avec le fichier "librairies_installer.bat"*
+
 * Pour lancer le programme, ouvrez le fichier "atc.py" avec python 3 **après avoir lancé Flight Simulator**
+
 * **Le fichier "phraséologie.txt" vous permet de connaitre les mots à employer pour utiliser correctement le programme.**
 
 -----
@@ -37,6 +40,3 @@ Pour créer le votre, copier le fichier "example.json" et modifiez le avec les i
 -----
 
 Notez que ce projet est créé par un passionné et non par un professionnel. Il peut donc contenir des erreurs, des imprécisions ou du manque de réalisme...
-
------
-Vous pouvez voir les ajouts en création [ici](https://github.com/Nash115/frenchATC-for-MSFS2020/discussions/categories/announcements)

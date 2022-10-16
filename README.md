@@ -39,4 +39,4 @@ Pour créer le votre, copier le fichier "example.json" et modifiez le avec les i
 Notez que ce projet est créé par un passionné et non par un professionnel. Il peut donc contenir des erreurs, des imprécisions ou du manque de réalisme...
 
 
-Work done by @nash115
+Work done by [@nash115](https://github.com/Nash115)

@@ -1,5 +1,9 @@
 # French ATC for MSFS2020
 
+<p align="center">
+  <img alt="French ATC banner" src="https://repository-images.githubusercontent.com/543331682/6cbbd56f-6373-4cd9-b418-34150eadeb98">
+</p>
+
 Cet outil est disponible uniquement en Français. Une phraséologie correcte et l'emploi de certains mots clés sont nécessaires pour le bon fonctionnement de l'ATC.
 
 Cet outil à été testé sur Microsoft Flight Simulator 2020

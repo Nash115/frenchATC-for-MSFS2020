@@ -4,27 +4,24 @@
   <img alt="French ATC banner" src="https://repository-images.githubusercontent.com/543331682/6cbbd56f-6373-4cd9-b418-34150eadeb98">
 </p>
 
-Cet outil est disponible uniquement en Français. Une phraséologie correcte et l'emploi de certains mots clés sont nécessaires pour le bon fonctionnement de l'ATC.
+Cet outil est disponible uniquement en Français et compatible avec Microsoft Flight Simulator 2020. Une phraséologie correcte et l'emploi de certains mots clés sont nécessaires pour le bon fonctionnement de l'ATC.
 
-Cet outil à été testé sur Microsoft Flight Simulator 2020
+-----
 
+# → Téléchargement et utilisation
+
+
+* **Le logiciel [Python 3](https://www.python.org/downloads/) est INDISPENSABLE pour l'exécution du programme !**
+* **Pour utiliser cet outil, téléchargez la dernière version [ici](https://github.com/Nash115/frenchATC-for-MSFS2020/releases)**
+
+Une fois téléchargé :
+* *Téléchargez les librairies python nécessaires à l'utilisation de ce programme avec le fichier "librairies_installer.bat"*
+* Pour lancer le programme, ouvrez le fichier "atc.py" avec python 3 **après avoir lancé Flight Simulator**
 * **Le fichier "phraséologie.txt" vous permet de connaitre les mots à employer pour utiliser correctement le programme.**
 
 -----
 
-* **Le logiciel [Python 3](https://www.python.org/downloads/) est INDISPENSABLE pour le fonctionnement de cet outil !**
-
------
-
-* **Pour utiliser cet outil, téléchargez la dernière version [ici](https://github.com/Nash115/frenchATC-for-MSFS2020/releases)**
-
-Une fois téléchargé :
-* *Un outil est disponible pour télécharger les librairies python nécessaires à l'utilisation de ce programme. Pour l'utiliser, lancez le fichier "librairies_installer.bat"*
-* Pour lancer le programme, ouvrez le fichier "atc.py" avec python 3 **après avoir lancé Flight Simulator**
-
------
-
-# Si le fichier concernant votre aéroport / aérodrome n'existe pas :
+# → Si le fichier concernant votre aéroport / aérodrome n'existe pas :
 
 * **Si vous n'avez pas les compétences pour le créer :**
 Demmandez à ce que quelqu'un le crée pour vous gratuitement [ici](https://github.com/Nash115/frenchATC-for-MSFS2020/discussions/new?category=need-a-new-airport)
@@ -40,12 +37,6 @@ Pour créer le votre, copier le fichier "example.json" et modifiez le avec les i
 -----
 
 Notez que ce projet est créé par un passionné et non par un professionnel. Il peut donc contenir des erreurs, des imprécisions ou du manque de réalisme...
-
 -----
 
-## Ajout(s) en cours de création :
-
- **[Ces ajouts sont en cours de création et seront disponible dans les plus brefs délais ! Merci de votre patience !]**
-
-* Gestion de la position de l'avion pour ainsi permettre une détection automatique de l'aéroport actuel et permettre une navigation libre sur l'ensemble du globe sans avoir à redémarrer le logiciel. Cet ajout nécéssitera donc, comme dans une situation réelle, de changer de fréquence. Les fréquences des aéroports ne sont doc pas accessibles partout !
-* Correction de bugs
+Vous pouvez voir les ajouts en création [ici](https://github.com/Nash115/frenchATC-for-MSFS2020/discussions/categories/announcements)

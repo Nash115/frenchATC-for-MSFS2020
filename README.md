@@ -14,7 +14,7 @@ Cet outil est disponible uniquement en Français et compatible avec Microsoft Fl
 
 
 * **Le logiciel [Python 3](https://www.python.org/downloads/) est INDISPENSABLE pour l'exécution du programme !**
-* **Pour utiliser cet outil, téléchargez la dernière version [ici](https://github.com/Nash115/frenchATC-for-MSFS2020/releases)**
+* **Téléchargez la dernière version de l'ATC [ici](https://github.com/Nash115/frenchATC-for-MSFS2020/releases)**
 
 Une fois téléchargé :
 * *Téléchargez les librairies python nécessaires à l'utilisation de ce programme avec le fichier "librairies_installer.bat"*

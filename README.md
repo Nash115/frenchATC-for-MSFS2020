@@ -30,10 +30,10 @@ Demmandez à ce que quelqu'un le crée pour vous gratuitement [ici](https://gith
 * **Sinon, vous pouvez le créer !**
 
 Dans le dossier assets puis dans airports, vous trouverez des aéroports.
-
 Pour créer le votre, copier le fichier "example.json" et modifiez le avec les informations de votre aéroport.
-
 *N'oubliez pas de nommer votre fichier avec le code OACI de votre aéroport avec l'extension .json (ex: "LFPO.json")*
+
+Dans le dossier assets modifiez le fichier "airports-locations.json" pour y ajouer les positions géographiques ainsi que les altitudes minimales et maximales dans lesquelles les fréquences de l'aéroport sont disponibles ainsi que le type de fréquence : "grd" sol ; "twr" tour ; "app" approche ; "all" sol tour et approche
 
 -----
 

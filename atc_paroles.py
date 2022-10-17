@@ -1,4 +1,4 @@
-# Version : 2022-10-13
+# Version : 2022-10-17
 
 from cgitb import text
 from gtts import gTTS
@@ -70,7 +70,7 @@ def reconaissanceATC(pilot,callsign,clr,frequency,airportData):
                 texte = callsign + " alignez vous piste "+ str([airportData["rwyTakeoff"]]) +", autorisé décollage, vent " + str(meteoPrise[0])  + " degrés, " + str(meteoPrise[1]) + " noeuds, rappelez en vent arrière"
                 needCollation = "autorisé décollage"
                 clearance = "air"
-            elif clearance == "departDsAxe":
+            else:
                 meteoPrise = atc_meteo.getMeteo(airportData["OACI"])
                 texte = callsign + " alignez vous piste "+ str([airportData["rwyTakeoff"]]) +", autorisé décollage, vent " + str(meteoPrise[0])  + " degrés, " + str(meteoPrise[1]) + " noeuds."
                 needCollation = "autorisé décollage"

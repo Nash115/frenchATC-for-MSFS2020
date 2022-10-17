@@ -1,4 +1,4 @@
-# Version : 2022-10-15
+# Version : 2022-10-17
 
 import argparse
 from cgi import test
@@ -20,24 +20,21 @@ alphabet_min = "abcdefghijklmnopqrstuvwxyz"
 alphabet_maj = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 alphabetAero = ["alpha","bravo","charlie","delta","echo","fox","golf","hotel","india","juliet","kilo","lima","mike","november","oscar","papa","quebec","romeo","sierra","tango","uniform","victor","whisky","x-ray","yankee","zulu"]
 
-airport = input("OACI code of your airport :")
-read_json = "assets/airports/" + airport + ".json"
+airportData = {"OACI":"NONE"}
 
-airportData = {}
+def airportDataMaker(airport):
+    read_json = "assets/airports/" + airport + ".json"
 
-if not os.path.exists(read_json):
-    print(Fore.BLUE + "Fichier aéroport :" + read_json + Fore.RED + " inexistant..." + Style.RESET_ALL)
-    print(Fore.YELLOW +"Le code OACI de l'aéroport saisi est inconnu. Vérifier l'ortographe.")
-    print("Si l'ortographe est correct, l'aéroport n'a pas été paramétré pour ce programme, vous pouvez le créer et lui donner le nom OACI correct." + Style.RESET_ALL)
-    os.system("pause")
-    exit()
-else:
-    with open(read_json, "r", encoding="utf-8") as json_file:
-        airportData = json.load(json_file)
-    print(Fore.BLUE + "Fichier aéroport :" + read_json + Fore.GREEN + " chargé avec succès !" + Style.RESET_ALL)
-#pprint.pprint(airportData)
+    airportDataMaked = {}
 
-print(Fore.GREEN +"ATC paramétré avec l'aéroport " + airportData["name"] + Style.RESET_ALL)
+    if not os.path.exists(read_json):
+        airportDataMaked = {"OACI":"NONE"}
+    else:
+        with open(read_json, "r", encoding="utf-8") as json_file:
+            airportDataMaked = json.load(json_file)
+
+    return airportDataMaked
+
 
 callsignD = input("Votre immatriculation (F-ABCD) : " + Fore.BLUE)
 callsign = ""
@@ -60,32 +57,14 @@ else:
 
 print(Fore.BLUE + "Indicatif d'appel :" + callsign + Style.RESET_ALL)
 
-os.system("title ATC by Nash115 - " + airportData["OACI"] + " ("+callsignD+")")
-
-print(Fore.CYAN + "Frequencies :")
-print("🛩️ Ground : " + airportData["frequency"]["grd"][1])
-print("🛫 Tower  : " + airportData["frequency"]["twr"][1])
-print("✈️ Appr   : " + airportData["frequency"]["app"][1] + Style.RESET_ALL)
-
-authFrequencies = [airportData["frequency"]["grd"][1],airportData["frequency"]["twr"][1],airportData["frequency"]["app"][1]]
+authFrequencies = []
+precedAuthFrequencies = []
 
 clearance = "sol"
 lastClearance = clearance
 ifNeedCollation = False
 
-# tryFrequency = True
-# while tryFrequency:
-#     frequency = input("Frequency : " + Fore.BLUE)
-#     if airportData["frequency"]["grd"][1] == frequency:
-#         tryFrequency = False
-#     elif airportData["frequency"]["twr"][1] == frequency:
-#         tryFrequency = False
-#     elif airportData["frequency"]["app"][1] == frequency:
-#         tryFrequency = False
-#     else:
-#         print(Fore.RED + "FREQUENCE INVALIDE - COMMUNICATION IMPOSSIBLE" + Style.RESET_ALL)
-
-frequency = str(atc_fs.getFrequency(airportData["frequency"]["grd"][1]))
+frequency = "000.000"
 lastfrequency = frequency
 
 rep = [clearance,ifNeedCollation,frequency]
@@ -111,7 +90,7 @@ def printHead():
     if frequency in authFrequencies:
         print("#" + 'Service ATC en fonction !'+ Fore.GREEN +' Bon vol !' + Style.RESET_ALL + ((27-len(frequency))*" ") + Back.CYAN + Fore.BLACK + " " + callsignD + " " + Style.RESET_ALL + " " + Back.BLUE + " " + frequency + " mHz " + Style.RESET_ALL + " #")
     else:
-        print("#" + 'Service ATC en fonction !'+ Fore.GREEN +' Bon vol !' + Style.RESET_ALL + ((27-len(airportData["frequency"]["grd"][1])-4)*" ") + Back.CYAN + Fore.BLACK + " " + callsignD + " " + Style.RESET_ALL + " " + Back.RED + " GRD:" + airportData["frequency"]["grd"][1] + " mHz " + Style.RESET_ALL + " #")
+        print("#" + 'Service ATC en fonction !'+ Fore.GREEN +' Bon vol !' + Style.RESET_ALL + ((27-len(frequency))*" ") + Back.CYAN + Fore.BLACK + " " + callsignD + " " + Style.RESET_ALL + " " + Back.RED + " " + frequency + " mHz " + Style.RESET_ALL + " #")
     print('#' * 80)
 
 parser = argparse.ArgumentParser(add_help=False)
@@ -167,11 +146,18 @@ try:
 
             rec = vosk.KaldiRecognizer(model, args.samplerate)
             while True:
+                if str(atc_fs.updatePositionAndFrequencies()[1] != None):
+                    airportData = airportDataMaker(atc_fs.updatePositionAndFrequencies()[1])
+                authFrequencies = atc_fs.updatePositionAndFrequencies()[0]
+                os.system("title ATC by Nash115 - " + airportData["OACI"] + " ("+callsignD+")")
                 frequency = str(atc_fs.getFrequency(frequency))
                 if frequency != lastfrequency:
                     print(Back.BLUE +"Fréquence modifiée :" + frequency +Style.RESET_ALL)
                     lastfrequency = frequency
                     printHead()
+                if precedAuthFrequencies != authFrequencies:
+                    printHead()
+                    precedAuthFrequencies = authFrequencies
 
                 data = q.get()
                 if rec.AcceptWaveform(data):

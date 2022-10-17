@@ -6,6 +6,8 @@
 
 Cet outil est disponible uniquement en Français et compatible avec Microsoft Flight Simulator 2020. Une phraséologie correcte et l'emploi de certains mots clés sont nécessaires pour le bon fonctionnement de l'ATC.
 
+**Cet outil permet uniquement des vols en VFR.**
+
 -----
 
 # → Téléchargement et utilisation
@@ -25,7 +27,6 @@ Une fois téléchargé :
 
 * **Si vous n'avez pas les compétences pour le créer :**
 Demmandez à ce que quelqu'un le crée pour vous gratuitement [ici](https://github.com/Nash115/frenchATC-for-MSFS2020/discussions/new?category=need-a-new-airport)
-
 * **Sinon, vous pouvez le créer !**
 
 Dans le dossier assets puis dans airports, vous trouverez des aéroports.
@@ -37,6 +38,5 @@ Pour créer le votre, copier le fichier "example.json" et modifiez le avec les i
 -----
 
 Notez que ce projet est créé par un passionné et non par un professionnel. Il peut donc contenir des erreurs, des imprécisions ou du manque de réalisme...
-
 
 Work done by [@nash115](https://github.com/Nash115)

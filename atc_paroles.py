@@ -6,6 +6,15 @@ import os
 import atc_meteo
 from random import randint
 
+def frequenceToPrononciation(freq):
+    result=""
+    for i in freq:
+        if i == ".":
+            result += " décimale "
+        else:
+            result += i
+    return result
+
 def reconaissanceATC(pilot,callsign,clr,frequency,airportData):
     needCollation = False
     clearance = clr
@@ -15,7 +24,7 @@ def reconaissanceATC(pilot,callsign,clr,frequency,airportData):
 
 
 
-    if frequency == airportData["frequency"]["grd"][1]: ### FREQUENCE SOL ###
+    if frequency == airportData["frequency"]["grd"]: ### FREQUENCE SOL ###
         #Premier contact
         if "bonjour" in pilot:
             texte = callsign + " bonjour, transmettez"
@@ -36,7 +45,7 @@ def reconaissanceATC(pilot,callsign,clr,frequency,airportData):
 
         #Shoot a la tour
         elif "point d'arrêt" in pilot:
-            texte = callsign + " contactez la tour "+ str(airportData["frequency"]["twr"][0]) +", au revoir"
+            texte = callsign + " contactez la tour "+ frequenceToPrononciation(airportData["frequency"]["twr"]) +", au revoir"
             needCollation = "tour"
 
         #Roulage parking
@@ -62,7 +71,7 @@ def reconaissanceATC(pilot,callsign,clr,frequency,airportData):
 
 
 
-    elif frequency == airportData["frequency"]["twr"][1]: ###FREQUENCE TOUR ###
+    elif frequency == airportData["frequency"]["twr"] or frequency == airportData["frequency"]["app"]: ###FREQUENCE TOUR ###
         #aligner et décoller
         if "point d'arrêt" in pilot:
             if clearance == "tourDePiste":
@@ -119,14 +128,14 @@ def reconaissanceATC(pilot,callsign,clr,frequency,airportData):
             
         #Contact sol
         elif "piste" in pilot and "dégag" in pilot and clearance == "atteri":
-            texte = callsign + " contactez le sol "+ str(airportData["frequency"]["grd"][0]) +", au revoir"
+            texte = callsign + " contactez le sol "+ frequenceToPrononciation(airportData["frequency"]["grd"]) +", au revoir"
             needCollation = "sol"
             clearance = "sol"
         
 
 
-    else:
-        texte = "Fréquence invalide..."
+    # else:
+    #     texte = "Fréquence invalide..."
 
 
     if "je n'ai pas compris votre demande, pouvez vous répéter ?" in texte:

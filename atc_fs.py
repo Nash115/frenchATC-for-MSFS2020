@@ -34,19 +34,19 @@ def updateFrequences(pathFile,capted,i):
     else:
         with open(pathFile, "r", encoding="utf-8") as json_file:
             if str(zoneData[i]["type"]) == "all":
-                capted.append(json.load(json_file)["frequency"]["app"][1])
-                capted.append(json.load(json_file)["frequency"]["twr"][1])
-                capted.append(json.load(json_file)["frequency"]["grd"][1])
+                capted.append(json.load(json_file)["frequency"]["app"])
+                capted.append(json.load(json_file)["frequency"]["twr"])
+                capted.append(json.load(json_file)["frequency"]["grd"])
             elif str(zoneData[i]["type"]) == "app":
-                capted.append(json.load(json_file)["frequency"]["app"][1])
+                capted.append(json.load(json_file)["frequency"]["app"])
             elif str(zoneData[i]["type"]) == "twr":
-                capted.append(json.load(json_file)["frequency"]["twr"][1])
+                capted.append(json.load(json_file)["frequency"]["twr"])
             elif str(zoneData[i]["type"]) == "grd":
-                capted.append(json.load(json_file)["frequency"]["grd"][1])
+                capted.append(json.load(json_file)["frequency"]["grd"])
             return capted
 
 def updatePositionAndFrequencies():
-    validateAirport = ""
+    validateAirport = "None"
     if (str(aq.get("PLANE_LATITUDE")) != "None" or str(aq.get("PLANE_LONGITUDE")) != "None"):
         captedFrequences = []
         captedFrequencesUpdated = []

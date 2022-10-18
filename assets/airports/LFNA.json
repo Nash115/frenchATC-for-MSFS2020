@@ -1,0 +1,15 @@
+{
+    "name":"Gap Tallard",
+    "OACI":"LFNA",
+    "rwyTakeoff":"02",
+    "rwyLanding":"02",
+    "runways":{
+        "02":["charlie"],
+        "20":["alpha"]
+    },
+    "frequency":{
+        "grd":"119.100",
+        "twr":"119.100",
+        "app":"119.100"
+    }
+}

@@ -7,8 +7,8 @@
         "piste":["point d'arret n°1","point d'arret n°2"]
     },
     "frequency":{
-        "grd":["prononciation fréquence sol (ex: 121 décimale 805)","fréquence sol (ex: 121.805)"],
-        "twr":["prononciation","118.625"],
-        "app":["prononciation (ex: None si non existant)","fréquence (ex: 000.000 si non existant)"]
+        "grd":"fréquence sol (ex: 121.805)",
+        "twr":"fréquence tour",
+        "app":"fréquence (fréquence tour si non existant)"
     }
 }

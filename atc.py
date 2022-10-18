@@ -146,8 +146,10 @@ try:
 
             rec = vosk.KaldiRecognizer(model, args.samplerate)
             while True:
-                if str(atc_fs.updatePositionAndFrequencies()[1] != None):
+                if str(atc_fs.updatePositionAndFrequencies()[1]) != "None":
                     airportData = airportDataMaker(atc_fs.updatePositionAndFrequencies()[1])
+                else:
+                    airportData = {"OACI":"NONE"}
                 authFrequencies = atc_fs.updatePositionAndFrequencies()[0]
                 os.system("title ATC by Nash115 - " + airportData["OACI"] + " ("+callsignD+")")
                 frequency = str(atc_fs.getFrequency(frequency))
@@ -166,7 +168,8 @@ try:
                         os.popen("debut.wav")
                         #print(pilot['text'])
                         if ifNeedCollation == False:
-                            rep = atc.reconaissanceATC(str(pilot['text']),callsign,clearance,frequency,airportData)
+                            if airportData["OACI"] != "None":
+                                rep = atc.reconaissanceATC(str(pilot['text']),callsign,clearance,frequency,airportData)
                             ifNeedCollation = rep[1]
                         elif "répéter" in pilot['text'] or "répétez" in pilot['text'] or "répété" in pilot['text']:
                             os.popen("conv.mp3")

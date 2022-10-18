@@ -7,8 +7,8 @@
         "17":["papa unité","papa deux","alpha unité","alpha deux"]
     },
     "frequency":{
-        "grd":["121 décimale 805","121.805"],
-        "twr":["118 décimale 625","118.625"],
-        "app":["118 décimale 625","118.625"]
+        "grd":"121.805",
+        "twr":"118.625",
+        "app":"118.625"
     }
 }

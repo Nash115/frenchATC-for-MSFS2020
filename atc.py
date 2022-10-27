@@ -1,4 +1,4 @@
-# Version : 2022-10-17
+# Version : 2022-10-27
 
 import argparse
 from cgi import test
@@ -12,7 +12,6 @@ import json
 from colorama import Fore, Back, Style
 import atc_paroles as atc
 import atc_fs
-
 
 q = queue.Queue()
 
@@ -36,7 +35,7 @@ def airportDataMaker(airport):
     return airportDataMaked
 
 
-callsignD = input("Votre immatriculation (F-ABCD) : " + Fore.BLUE)
+callsignD = input("Votre immatriculation (F-ABCD) : ")
 callsign = ""
 carractsLettres = [0,4,5]
 caract = 0
@@ -92,6 +91,8 @@ def printHead():
     else:
         print("#" + 'Service ATC en fonction !'+ Fore.GREEN +' Bon vol !' + Style.RESET_ALL + ((27-len(frequency))*" ") + Back.CYAN + Fore.BLACK + " " + callsignD + " " + Style.RESET_ALL + " " + Back.RED + " " + frequency + " mHz " + Style.RESET_ALL + " #")
     print('#' * 80)
+    print("#" + "Airport : " + airportData["OACI"] + " "*5 + "Freq : " + str(authFrequencies) + " "*(52-len(str(authFrequencies))) + "#")
+    print('#' * 80)
 
 parser = argparse.ArgumentParser(add_help=False)
 parser.add_argument(
@@ -146,13 +147,13 @@ try:
 
             rec = vosk.KaldiRecognizer(model, args.samplerate)
             while True:
-                if str(atc_fs.updatePositionAndFrequencies()[1]) != "None":
+                if atc_fs.updatePositionAndFrequencies()[1] != "None":
                     airportData = airportDataMaker(atc_fs.updatePositionAndFrequencies()[1])
                 else:
                     airportData = {"OACI":"NONE"}
                 authFrequencies = atc_fs.updatePositionAndFrequencies()[0]
                 os.system("title ATC by Nash115 - " + airportData["OACI"] + " ("+callsignD+")")
-                frequency = str(atc_fs.getFrequency(frequency))
+                frequency = str(atc_fs.getFrequencyInAircraft(frequency))
                 if frequency != lastfrequency:
                     print(Back.BLUE +"Fréquence modifiée :" + frequency +Style.RESET_ALL)
                     lastfrequency = frequency

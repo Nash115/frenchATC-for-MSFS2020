@@ -1,4 +1,4 @@
-# Version : 2022-10-17
+# Version : 2022-10-27
 
 from SimConnect import *
 import os
@@ -11,7 +11,7 @@ with open("assets/airports-locations.json", "r", encoding="utf-8") as json_file:
 sm = SimConnect()
 aq = AircraftRequests(sm, _time=2000)
 
-def getFrequency(frec):
+def getFrequencyInAircraft(frec):
     if aq.get("COM_ACTIVE_FREQUENCY:1") != None:
         frequency = str(round(aq.get("COM_ACTIVE_FREQUENCY:1"), 4))
         while len(frequency)<6:
@@ -45,6 +45,19 @@ def updateFrequences(pathFile,capted,i):
                 capted.append(json.load(json_file)["frequency"]["grd"])
             return capted
 
+def inZone():
+    latitude = str(aq.get("PLANE_LATITUDE"))
+    longitude = str(aq.get("PLANE_LONGITUDE"))
+    for i in latitude :
+        decimal = False
+        latitudeD = ""
+        latitudeN = ""
+        if i != ".":
+            if decimal == False:
+                latitudeN += i
+            else:
+                latitudeD += i
+
 def updatePositionAndFrequencies():
     validateAirport = "None"
     if (str(aq.get("PLANE_LATITUDE")) != "None" or str(aq.get("PLANE_LONGITUDE")) != "None"):
@@ -52,8 +65,10 @@ def updatePositionAndFrequencies():
         captedFrequencesUpdated = []
         for i in range(len(zoneData)):
             if(str(aq.get("PLANE_LATITUDE")) <= str(zoneData[i]["latitude1"]) and str(aq.get("PLANE_LATITUDE")) >= str(zoneData[i]["latitude2"]) and str(aq.get("PLANE_LONGITUDE")) >= str(zoneData[i]["longitude1"]) and str(aq.get("PLANE_LONGITUDE")) <= str(zoneData[i]["longitude2"])):
-                if(str(aq.get("PLANE_ALTITUDE")) >= str(zoneData[i]["altitudeMin"]) and str(aq.get("PLANE_ALTITUDE")) <= str(zoneData[i]["altitudeMax"])):
-                    read_json = "assets/airports/" + str(zoneData[i]["OACI"]) + ".json"
-                    validateAirport = str(zoneData[i]["OACI"])
-                    captedFrequencesUpdated = updateFrequences(read_json,captedFrequences,i)
-        return captedFrequencesUpdated,validateAirport
+                read_json = "assets/airports/" + str(zoneData[i]["OACI"]) + ".json"
+                validateAirport = str(zoneData[i]["OACI"])
+                captedFrequencesUpdated = updateFrequences(read_json,captedFrequences,i)
+        if str(type(validateAirport)) != "<class 'NoneType'>":
+            return captedFrequencesUpdated,validateAirport
+        else:
+            return captedFrequencesUpdated,"None"

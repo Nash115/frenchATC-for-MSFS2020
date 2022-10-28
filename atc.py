@@ -1,4 +1,4 @@
-# Version : 2022-10-27
+# Version : 2022-10-28
 
 import argparse
 from cgi import test
@@ -34,11 +34,21 @@ def airportDataMaker(airport):
 
     return airportDataMaked
 
+callsignD = "ASXGS"
+os.system("cls")
+print(Fore.YELLOW + "En attente du démarrage d'un vol pour commencer..." + Style.RESET_ALL)
+while callsignD == "ASXGS":
+    callsignD = atc_fs.getImmatOfAircraft()
+print(Fore.GREEN + "Immatriculation détectée... Démarrage..." + Style.RESET_ALL)
 
-callsignD = input("Votre immatriculation (F-ABCD) : ")
 callsign = ""
 carractsLettres = [0,4,5]
 caract = 0
+
+if not(len(callsignD) == 6 and "-" in callsignD and (callsignD[0] == "F" or callsignD == "f")):
+    print(Fore.RED + "Immatriculation invalide : " + callsignD  + " n'est pas de la forme 'F-XXXX' ! " + Style.RESET_ALL)
+    while not(len(callsignD) == 6 and "-" in callsignD and (callsignD[0] == "F" or callsignD == "f")):
+        callsignD = atc_fs.getImmatOfAircraft()
 
 if len(callsignD) == 6 and "-" in callsignD and (callsignD[0] == "F" or callsignD == "f"):
     for i in callsignD:
@@ -49,10 +59,6 @@ if len(callsignD) == 6 and "-" in callsignD and (callsignD[0] == "F" or callsign
             callsign += alphabetAero[alphabet_maj.index(i)]
             callsign += " "
         caract += 1
-else:
-    print(Fore.RED + "Immatriculation invalide" + Style.RESET_ALL)
-    os.system("pause")
-    exit()
 
 print(Fore.BLUE + "Indicatif d'appel :" + callsign + Style.RESET_ALL)
 

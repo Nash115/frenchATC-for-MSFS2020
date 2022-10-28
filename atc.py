@@ -39,7 +39,7 @@ os.system("cls")
 print(Fore.YELLOW + "En attente du démarrage d'un vol pour commencer..." + Style.RESET_ALL)
 while callsignD == "ASXGS":
     callsignD = atc_fs.getImmatOfAircraft()
-print(Fore.GREEN + "Immatriculation détectée... Démarrage..." + Style.RESET_ALL)
+print(Fore.GREEN + "Immatriculation perso détectée... Démarrage..." + Style.RESET_ALL)
 
 callsign = ""
 carractsLettres = [0,4,5]

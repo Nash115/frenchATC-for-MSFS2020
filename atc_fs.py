@@ -1,4 +1,4 @@
-# Version : 2022-10-27
+# Version : 2022-10-28
 
 from SimConnect import *
 import os
@@ -10,6 +10,15 @@ with open("assets/airports-locations.json", "r", encoding="utf-8") as json_file:
 
 sm = SimConnect()
 aq = AircraftRequests(sm, _time=2000)
+
+def getImmatOfAircraft():
+    immatF = ""
+    immat = str(aq.get("ATC_ID"))
+    immat = immat[2:]
+    for i in immat:
+        if i != "'":
+            immatF += i
+    return immatF
 
 def getFrequencyInAircraft(frec):
     if aq.get("COM_ACTIVE_FREQUENCY:1") != None:

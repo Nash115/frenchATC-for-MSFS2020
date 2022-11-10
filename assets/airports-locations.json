@@ -7,5 +7,11 @@
 	{"latitude1":"43.768310","longitude1":"6.983973","latitude2":"43.430006","longitude2":"7.454954","OACI":"LFMN","type":"twr"},
 	{"latitude1":"43.768310","longitude1":"6.983973","latitude2":"43.430006","longitude2":"7.454954","OACI":"LFMN","type":"app"},
 
-	{"latitude1":"44.537865","longitude1":"5.911441","latitude2":"44.352642","longitude2":"6.180351","OACI":"LFNA","type":"all"}
+	{"latitude1":"44.537865","longitude1":"5.911441","latitude2":"44.352642","longitude2":"6.180351","OACI":"LFNA","type":"all"},
+
+
+
+
+
+	{"latitude1":"ALL","OACI":"UNICOM","type":"UNICOM"}
 ]

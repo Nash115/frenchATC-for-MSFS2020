@@ -23,7 +23,7 @@ def getImmatOfAircraft():
 def getFrequencyInAircraft(frec):
     if aq.get("COM_ACTIVE_FREQUENCY:1") != None:
         frequency = str(round(aq.get("COM_ACTIVE_FREQUENCY:1"), 4))
-        while len(frequency)<6:
+        while len(frequency)<7:
             frequency += "0"
         return frequency
     else:

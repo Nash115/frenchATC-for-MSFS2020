@@ -149,8 +149,8 @@ def reconaissanceATC(pilot,callsign,clr,frequency,airportData):
             clearance = "sol"
 
     elif frequency == "122.800": # UNICOM
-        texte = " "
-        os.popen("collation.wav")       
+        os.popen("collation.wav")
+        return clearance,needCollation
 
     # else:
     #     texte = "Fréquence invalide..."

@@ -8,7 +8,7 @@ from random import randint
 
 capteeBefore = False
 
-def transfertResponsabilitesNecessaire(frequency,captee):
+def transfertResponsabilitesNecessaire(callsign,frequency,captee):
     global capteeBefore
 
     if frequency in captee:

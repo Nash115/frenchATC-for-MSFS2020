@@ -148,7 +148,7 @@ def reconaissanceATC(pilot,callsign,clr,frequency,airportData):
             needCollation = "sol"
             clearance = "sol"
 
-    elif "122.80" in frequency: # UNICOM
+    elif frequency == "122.800": # UNICOM
         texte = "Vous êtes sur la fréquence UNICOM. Pas de conversation disponible avec cette fréquence pour l'instant..."        
 
     # else:

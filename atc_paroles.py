@@ -157,7 +157,7 @@ def reconaissanceATC(pilot,callsign,clr,frequency,airportData):
 
 
     if "je n'ai pas compris votre demande, pouvez vous répéter ?" in texte:
-        print(pilot)
+        print(frequency+" <- "+pilot)
     textS = gTTS(text=texte, lang="fr", slow=False)
     textS.save("conv.mp3")
     os.popen("conv.mp3")

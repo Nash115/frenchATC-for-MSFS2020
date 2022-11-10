@@ -75,7 +75,7 @@ def updatePositionAndFrequencies():
         for i in range(len(zoneData)):
             if(str(zoneData[i]["latitude1"]) == "ALL" and str(zoneData[i]["type"]) == "UNICOM"):
                 captedFrequencesUpdated.append("122.800")
-            if(str(aq.get("PLANE_LATITUDE")) <= str(zoneData[i]["latitude1"]) and str(aq.get("PLANE_LATITUDE")) >= str(zoneData[i]["latitude2"]) and str(aq.get("PLANE_LONGITUDE")) >= str(zoneData[i]["longitude1"]) and str(aq.get("PLANE_LONGITUDE")) <= str(zoneData[i]["longitude2"])):
+            elif(str(aq.get("PLANE_LATITUDE")) <= str(zoneData[i]["latitude1"]) and str(aq.get("PLANE_LATITUDE")) >= str(zoneData[i]["latitude2"]) and str(aq.get("PLANE_LONGITUDE")) >= str(zoneData[i]["longitude1"]) and str(aq.get("PLANE_LONGITUDE")) <= str(zoneData[i]["longitude2"])):
                 read_json = "assets/airports/" + str(zoneData[i]["OACI"]) + ".json"
                 validateAirport = str(zoneData[i]["OACI"])
                 captedFrequencesUpdated = updateFrequences(read_json,captedFrequences,i)

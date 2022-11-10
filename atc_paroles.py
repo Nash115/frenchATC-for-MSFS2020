@@ -6,6 +6,22 @@ import os
 import atc_meteo
 from random import randint
 
+capteeBefore = False
+
+def transfertResponsabilitesNecessaire(frequency,captee):
+    global capteeBefore
+
+    if frequency in captee:
+        capteeBefore = True
+    else:
+        if capteeBefore:
+            capteeBefore = False
+            textS = gTTS(text= callsign + " vous sortez de ma zone de contrôle, vous pouvez changer de fréquence.", lang="fr", slow=False)
+            textS.save("conv.mp3")
+            os.popen("conv.mp3")
+            return True
+    return False
+
 def frequenceToPrononciation(freq):
     result=""
     for i in freq:

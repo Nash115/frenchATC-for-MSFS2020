@@ -153,6 +153,9 @@ try:
 
             rec = vosk.KaldiRecognizer(model, args.samplerate)
             while True:
+
+                atc.transfertResponsabilitesNecessaire(frequency,authFrequencies)
+
                 if atc_fs.updatePositionAndFrequencies()[1] != "None":
                     airportData = airportDataMaker(atc_fs.updatePositionAndFrequencies()[1])
                 else:

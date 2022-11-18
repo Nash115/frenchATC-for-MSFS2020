@@ -44,3 +44,6 @@ Passage bas : * [Fox Sierra Hotel]  en finale pour un passage bas * {C}
 
 Une fois la piste dégagée après avoir atterri :
 * [Fox Sierra Hotel]  piste dégagée * {C}
+
+UNICOM-------------------------------------------------------------------------------------------------------------------------
+La fréquence UNICOM est une fréquence d'autoinformation. Pas de contrôleur sur la fréquence. Énoncez vos actions et vos intentions.

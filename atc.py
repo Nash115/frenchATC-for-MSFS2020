@@ -10,8 +10,9 @@ import vosk
 import sys
 import json
 from colorama import Fore, Back, Style
-import atc_paroles as atc
+import atc_paroles
 import atc_fs
+import airport_data_maker
 
 q = queue.Queue()
 
@@ -20,19 +21,6 @@ alphabet_maj = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 alphabetAero = ["alpha","bravo","charlie","delta","echo","fox","golf","hotel","india","juliet","kilo","lima","mike","november","oscar","papa","quebec","romeo","sierra","tango","uniform","victor","whisky","x-ray","yankee","zulu"]
 
 airportData = {"OACI":"NONE"}
-
-def airportDataMaker(airport):
-    read_json = "assets/airports/" + airport + ".json"
-
-    airportDataMaked = {}
-
-    if not os.path.exists(read_json):
-        airportDataMaked = {"OACI":"NONE"}
-    else:
-        with open(read_json, "r", encoding="utf-8") as json_file:
-            airportDataMaked = json.load(json_file)
-
-    return airportDataMaked
 
 callsignD = "ASXGS"
 os.system("cls")
@@ -154,12 +142,12 @@ try:
             rec = vosk.KaldiRecognizer(model, args.samplerate)
             while True:
 
-                testSiTransfertRespNecessaire = atc.transfertResponsabilitesNecessaire(callsign,frequency,authFrequencies,)
+                testSiTransfertRespNecessaire = atc_paroles.transfertResponsabilitesNecessaire(callsign,frequency,authFrequencies,)
                 if testSiTransfertRespNecessaire:
                     ifNeedCollation = "fréquence"
 
                 if atc_fs.updatePositionAndFrequencies()[1] != "None":
-                    airportData = airportDataMaker(atc_fs.updatePositionAndFrequencies()[1])
+                    airportData = airport_data_maker.maker(atc_fs.updatePositionAndFrequencies()[1])
                 else:
                     airportData = {"OACI":"NONE"}
                 authFrequencies = atc_fs.updatePositionAndFrequencies()[0]
@@ -181,7 +169,7 @@ try:
                         #print(pilot['text'])
                         if ifNeedCollation == False:
                             if airportData["OACI"] != "None":
-                                rep = atc.reconaissanceATC(str(pilot['text']),callsign,clearance,frequency,airportData)
+                                rep = atc_paroles.reconaissanceATC(str(pilot['text']),callsign,clearance,frequency,airportData)
                             ifNeedCollation = rep[1]
                         elif "répéter" in pilot['text'] or "répétez" in pilot['text'] or "répété" in pilot['text']:
                             os.popen("conv.mp3")

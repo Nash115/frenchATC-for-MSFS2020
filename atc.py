@@ -76,16 +76,7 @@ def callback(indata, frames, time, status):
         print(status, file=sys.stderr)
     q.put(bytes(indata))
 
-def printHead():
-    os.system('cls')
-    aff.display('#' * 80)
-    if frequency in authFrequencies:
-        aff.display("#" + 'Service ATC en fonction !'+ Fore.GREEN +' Bon vol !' + Style.RESET_ALL + ((27-len(frequency))*" ") + Back.CYAN + Fore.BLACK + " " + callsignD + " " + Style.RESET_ALL + " " + Back.BLUE + " " + frequency + " mHz " + Style.RESET_ALL + " #")
-    else:
-        print("#" + 'Service ATC en fonction !'+ Fore.GREEN +' Bon vol !' + Style.RESET_ALL + ((27-len(frequency))*" ") + Back.CYAN + Fore.BLACK + " " + callsignD + " " + Style.RESET_ALL + " " + Back.RED + " " + frequency + " mHz " + Style.RESET_ALL + " #")
-    aff.display('#' * 80)
-    aff.display("#" + "Airport : " + airportData["OACI"] + " "*5 + "Freq : " + str(authFrequencies) + " "*(52-len(str(authFrequencies))) + "#")
-    aff.display('#' * 80)
+
 
 parser = argparse.ArgumentParser(add_help=False)
 parser.add_argument(
@@ -137,7 +128,7 @@ try:
 
     with sd.RawInputStream(samplerate=args.samplerate, blocksize = 8000, device=args.device, dtype='int16',
                             channels=1, callback=callback):
-            printHead()
+            aff.printHead()
 
             rec = vosk.KaldiRecognizer(model, args.samplerate)
             while True:
@@ -156,9 +147,9 @@ try:
                 if frequency != lastfrequency:
                     aff.display(Back.BLUE +"Fréquence modifiée :" + frequency +Style.RESET_ALL)
                     lastfrequency = frequency
-                    printHead()
+                    aff.printHead()
                 if precedAuthFrequencies != authFrequencies:
-                    printHead()
+                    aff.printHead()
                     precedAuthFrequencies = authFrequencies
 
                 data = q.get()
@@ -187,7 +178,7 @@ try:
                             if clearance != lastClearance:
                                 aff.display(Back.MAGENTA + "Nouvelle Clearance : " + clearance + Style.RESET_ALL)
                                 lastClearance = clearance
-                    #printHead()
+                    #aff.printHead()
                 
                 if dump_fn is not None:
                     dump_fn.write(data)

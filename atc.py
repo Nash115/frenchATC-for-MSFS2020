@@ -10,7 +10,7 @@ import json
 from colorama import Fore, Back, Style
 import atc_paroles
 import atc_fs
-import airport_data_maker
+import data_maker
 import atc_display as aff
 
 q = queue.Queue()
@@ -138,7 +138,7 @@ try:
                     ifNeedCollation = "fréquence"
 
                 if atc_fs.updatePositionAndFrequencies()[1] != "None":
-                    airportData = airport_data_maker.maker(atc_fs.updatePositionAndFrequencies()[1])
+                    airportData = data_maker.maker(atc_fs.updatePositionAndFrequencies()[1])
                 else:
                     airportData = {"OACI":"NONE"}
                 authFrequencies = atc_fs.updatePositionAndFrequencies()[0]

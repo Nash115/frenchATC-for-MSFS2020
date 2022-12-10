@@ -1,6 +1,9 @@
 # Version : 2022-10-28
-
-from SimConnect import *
+try:
+    from SimConnect import *
+except ConnectionError:
+    print("ERREUR   : Connection avec MSFS2020 impossible.")
+    print("SOLUTION : Lancez MSFS2020 avant d'exécuter le programme.")
 import os
 import json
 from colorama import Fore, Back, Style
@@ -8,7 +11,13 @@ from colorama import Fore, Back, Style
 with open("assets/airports-locations.json", "r", encoding="utf-8") as json_file:
         zoneData = json.load(json_file)
 
-sm = SimConnect()
+try:
+    sm = SimConnect()
+except ConnectionError:
+    print(Fore.RED + "ERREUR   : Connection avec MSFS2020 impossible.")
+    print("SOLUTION : Lancez MSFS2020 avant d'exécuter le programme." + Style.RESET_ALL)
+    os.system("pause")
+    exit()
 aq = AircraftRequests(sm, _time=2000)
 
 def getImmatOfAircraft():

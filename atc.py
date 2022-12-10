@@ -72,7 +72,7 @@ aff.display(Fore.GREEN +' Démarrage des services en cours... Veuillez patienter
 
 def callback(indata, frames, time, status):
     """This is called (from a separate thread) for each audio block."""
-    if status:
+    #if status:
         #print(status, file=sys.stderr)
     q.put(bytes(indata))
 

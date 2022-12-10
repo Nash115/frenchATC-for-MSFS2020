@@ -1,3 +1,6 @@
+import os
+import json
+
 def maker(airport):
     read_json = "assets/airports/" + airport + ".json"
 

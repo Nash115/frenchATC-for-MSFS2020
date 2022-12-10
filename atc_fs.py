@@ -17,12 +17,13 @@ while AttenteLancement == False:
     try:
         sm = SimConnect()
     except ConnectionError:
+        os.system("cls")
         print(Fore.RED + "ERREUR   : Connection avec MSFS2020 impossible.")
         print("SOLUTION : Lancez MSFS2020 avant d'exécuter le programme." + Style.RESET_ALL)
-        os.system("pause")
-        exit()
+        print(Fore.YELLOW + "En attente du lancement de Flight Simulator..." + Style.RESET_ALL)
     else:
         AttenteLancement = True
+        print(Fore.GREEN + "Flight Simulator lancé ! Démarrage..." + Style.RESET_ALL)
 aq = AircraftRequests(sm, _time=2000)
 
 def getImmatOfAircraft():

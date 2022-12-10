@@ -33,16 +33,17 @@ airportData = {"OACI":"NONE"}
 callsignD = "ASXGS"
 aff.clear()
 aff.display(Fore.YELLOW + "En attente du démarrage d'un vol pour commencer..." + Style.RESET_ALL)
-while callsignD == "ASXGS":
+while "ASXGS" in callsignD:
     callsignD = atc_fs.getImmatOfAircraft()
-aff.display(Fore.GREEN + "Immatriculation perso détectée... Démarrage..." + Style.RESET_ALL)
+aff.display(Fore.GREEN + "Immatriculation perso détectée... Démarrage... (" + callsignD + ")" + Style.RESET_ALL)
 
 callsign = ""
 carractsLettres = [0,4,5]
 caract = 0
 
 if not(len(callsignD) == 6 and "-" in callsignD and (callsignD[0] == "F" or callsignD == "f")):
-    aff.display(Fore.RED + "Immatriculation invalide : " + callsignD  + " n'est pas de la forme 'F-XXXX' ! " + Style.RESET_ALL)
+    if not("ASXGS" in callsignD):
+        aff.display(Fore.RED + "Immatriculation invalide : " + callsignD  + " n'est pas de la forme 'F-XXXX' ! " + Style.RESET_ALL)
     while not(len(callsignD) == 6 and "-" in callsignD and (callsignD[0] == "F" or callsignD == "f")):
         callsignD = atc_fs.getImmatOfAircraft()
 

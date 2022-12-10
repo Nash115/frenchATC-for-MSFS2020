@@ -1,10 +1,14 @@
 # Version : 2022-10-17
-
-from cgitb import text
-from gtts import gTTS
 import os
-import atc_meteo
-from random import randint
+try:
+    from cgitb import text
+    from gtts import gTTS
+    import atc_meteo
+    from random import randint
+except:
+    print("Impossible d'importer les modules nécessaires. Exécutez le programme 'libraries_installer.bat'.")
+    os.system("pause")
+    exit()
 
 capteeBefore = False
 

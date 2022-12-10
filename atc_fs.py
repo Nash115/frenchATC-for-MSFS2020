@@ -1,12 +1,13 @@
 # Version : 2022-10-28
+import os
 try:
     from SimConnect import *
-except ConnectionError:
-    print("ERREUR   : Connection avec MSFS2020 impossible.")
-    print("SOLUTION : Lancez MSFS2020 avant d'exécuter le programme.")
-import os
-import json
-from colorama import Fore, Back, Style
+    import json
+    from colorama import Fore, Back, Style
+except:
+    print("Impossible d'importer les modules nécessaires. Exécutez le programme 'libraries_installer.bat'.")
+    os.system("pause")
+    exit()
 
 with open("assets/airports-locations.json", "r", encoding="utf-8") as json_file:
         zoneData = json.load(json_file)

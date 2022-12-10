@@ -1,7 +1,12 @@
 # Version : 2022-10-12
-
-import requests
-from bs4 import BeautifulSoup
+import os
+try:
+    import requests
+    from bs4 import BeautifulSoup
+except:
+    print("Impossible d'importer les modules nécessaires. Exécutez le programme 'libraries_installer.bat'.")
+    os.system("pause")
+    exit()
 
 actuTimeMetar = ""
 

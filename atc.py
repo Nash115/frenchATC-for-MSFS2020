@@ -1,17 +1,26 @@
-import argparse
-from cgi import test
-import os
-import queue
-from subprocess import call
-import sounddevice as sd
-import vosk
-import sys
-import json
-from colorama import Fore, Back, Style
-import atc_paroles
-import atc_fs
-import data_maker
-import atc_display as aff
+try:
+    import argparse
+    from cgi import test
+    import os
+    import queue
+    from subprocess import call
+    import sounddevice as sd
+    import vosk
+    import sys
+    import json
+    from colorama import Fore, Back, Style
+except:
+    print("Impossible d'importer les modules nécessaires. Exécutez le programme 'libraries_installer.bat'.")
+    os.system("pause")
+    exit()
+
+try:
+    import atc_paroles
+    import atc_fs
+    import data_maker
+    import atc_display as aff
+except:
+    print("Installation incomplète ou corrompue. Impossible d'exécuter le programme.")
 
 q = queue.Queue()
 
@@ -60,6 +69,17 @@ frequency = "000.000"
 lastfrequency = frequency
 
 rep = [clearance,ifNeedCollation,frequency]
+
+def printHead():
+    aff.clear()
+    aff.display('#' * 80)
+    if frequency in authFrequencies:
+        aff.display("#" + 'Service ATC en fonction !'+ Fore.GREEN +' Bon vol !' + Style.RESET_ALL + ((27-len(frequency))*" ") + Back.CYAN + Fore.BLACK + " " + callsignD + " " + Style.RESET_ALL + " " + Back.BLUE + " " + frequency + " mHz " + Style.RESET_ALL + " #")
+    else:
+        aff.display("#" + 'Service ATC en fonction !'+ Fore.GREEN +' Bon vol !' + Style.RESET_ALL + ((27-len(frequency))*" ") + Back.CYAN + Fore.BLACK + " " + callsignD + " " + Style.RESET_ALL + " " + Back.RED + " " + frequency + " mHz " + Style.RESET_ALL + " #")
+    aff.display('#' * 80)
+    aff.display("#" + "Airport : " + airportData["OACI"] + " "*5 + "Freq : " + str(authFrequencies) + " "*(52-len(str(authFrequencies))) + "#")
+    aff.display('#' * 80)
 
 def int_or_str(text):
     """Helper function for argument parsing."""

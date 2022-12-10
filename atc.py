@@ -148,7 +148,7 @@ try:
 
     with sd.RawInputStream(samplerate=args.samplerate, blocksize = 8000, device=args.device, dtype='int16',
                             channels=1, callback=callback):
-            aff.printHead()
+            printHead()
 
             rec = vosk.KaldiRecognizer(model, args.samplerate)
             while True:
@@ -157,19 +157,22 @@ try:
                 if testSiTransfertRespNecessaire:
                     ifNeedCollation = "fréquence"
 
-                if atc_fs.updatePositionAndFrequencies()[1] != "None":
-                    airportData = data_maker.maker(atc_fs.updatePositionAndFrequencies()[1])
-                else:
-                    airportData = {"OACI":"NONE"}
+                try:
+                    if atc_fs.updatePositionAndFrequencies()[1] != "None":
+                        airportData = data_maker.maker(atc_fs.updatePositionAndFrequencies()[1])
+                    else:
+                        airportData = {"OACI":"NONE"}
+                except TypeError:
+                    pass
                 authFrequencies = atc_fs.updatePositionAndFrequencies()[0]
-                aff.defTitleOfWindow("title ATC by Nash115" + " ("+callsignD+")")
+                aff.defTitleOfWindow("ATC by Nash115" + " ("+callsignD+")")
                 frequency = str(atc_fs.getFrequencyInAircraft(frequency))
                 if frequency != lastfrequency:
                     aff.display(Back.BLUE +"Fréquence modifiée :" + frequency +Style.RESET_ALL)
                     lastfrequency = frequency
-                    aff.printHead()
+                    printHead()
                 if precedAuthFrequencies != authFrequencies:
-                    aff.printHead()
+                    printHead()
                     precedAuthFrequencies = authFrequencies
 
                 data = q.get()
@@ -198,7 +201,7 @@ try:
                             if clearance != lastClearance:
                                 aff.display(Back.MAGENTA + "Nouvelle Clearance : " + clearance + Style.RESET_ALL)
                                 lastClearance = clearance
-                    #aff.printHead()
+                    #printHead()
                 
                 if dump_fn is not None:
                     dump_fn.write(data)

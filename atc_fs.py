@@ -12,13 +12,17 @@ except:
 with open("assets/airports-locations.json", "r", encoding="utf-8") as json_file:
         zoneData = json.load(json_file)
 
-try:
-    sm = SimConnect()
-except ConnectionError:
-    print(Fore.RED + "ERREUR   : Connection avec MSFS2020 impossible.")
-    print("SOLUTION : Lancez MSFS2020 avant d'exécuter le programme." + Style.RESET_ALL)
-    os.system("pause")
-    exit()
+AttenteLancement = False
+while AttenteLancement == False:
+    try:
+        sm = SimConnect()
+    except ConnectionError:
+        print(Fore.RED + "ERREUR   : Connection avec MSFS2020 impossible.")
+        print("SOLUTION : Lancez MSFS2020 avant d'exécuter le programme." + Style.RESET_ALL)
+        os.system("pause")
+        exit()
+    else:
+        AttenteLancement = True
 aq = AircraftRequests(sm, _time=2000)
 
 def getImmatOfAircraft():

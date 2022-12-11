@@ -1,4 +1,3 @@
-# Version : 2022-10-28
 import os
 try:
     from SimConnect import *
@@ -13,17 +12,18 @@ with open("assets/airports-locations.json", "r", encoding="utf-8") as json_file:
         zoneData = json.load(json_file)
 
 AttenteLancement = False
+os.system("cls")
+print(Fore.RED + "Si ce message ne disparait pas, cela signifie que la connection avec MSFS2020 n'a pas abouti.")
+print(Fore.YELLOW + "En attente de la connection avec Flight Simulator..." + Style.RESET_ALL)
 while AttenteLancement == False:
     try:
         sm = SimConnect()
     except ConnectionError:
-        os.system("cls")
-        print(Fore.RED + "ERREUR   : Connection avec MSFS2020 impossible.")
-        print("SOLUTION : Lancez MSFS2020 avant d'exécuter le programme." + Style.RESET_ALL)
-        print(Fore.YELLOW + "En attente du lancement de Flight Simulator..." + Style.RESET_ALL)
+        AttenteLancement = False
     else:
         AttenteLancement = True
         print(Fore.GREEN + "Flight Simulator lancé ! Démarrage..." + Style.RESET_ALL)
+os.system("cls")
 aq = AircraftRequests(sm, _time=2000)
 
 def getImmatOfAircraft():

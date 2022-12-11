@@ -1,12 +1,9 @@
+import os
 try:
     import argparse
-    from cgi import test
-    import os
     import queue
-    from subprocess import call
     import sounddevice as sd
     import vosk
-    import sys
     import json
     from colorama import Fore, Back, Style
 except:

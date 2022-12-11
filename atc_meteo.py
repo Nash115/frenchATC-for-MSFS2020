@@ -1,4 +1,3 @@
-# Version : 2022-10-12
 import os
 try:
     import requests

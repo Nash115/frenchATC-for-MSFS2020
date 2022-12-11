@@ -1,7 +1,5 @@
-# Version : 2022-10-17
 import os
 try:
-    from cgitb import text
     from gtts import gTTS
     import atc_meteo
     from random import randint

@@ -42,7 +42,7 @@ def getFrequencyInAircraft(frec):
             frequency += "0"
         return frequency
     else:
-        print("Frquence introuvable, paramétrage de la dernière fréquence")
+        #print("Frequence introuvable, paramétrage de la dernière fréquence")
         return frec
 
 

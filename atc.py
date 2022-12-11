@@ -30,19 +30,20 @@ airportData = {"OACI":"NONE"}
 callsignD = "ASXGS"
 aff.clear()
 aff.display(Fore.YELLOW + "En attente du démarrage d'un vol pour commencer..." + Style.RESET_ALL)
-while "ASXGS" in callsignD:
-    callsignD = atc_fs.getImmatOfAircraft()
+# while "ASXGS" in callsignD or callsignD == "ne":
+#     callsignD = atc_fs.getImmatOfAircraft()
+if not(len(callsignD) == 6 and "-" in callsignD and (callsignD[0] == "F" or callsignD == "f")):
+    if not("ASXGS" in callsignD):
+        aff.display(Fore.RED + "Immatriculation invalide : " + callsignD  + " n'est pas de la forme 'F-XXXX' ! " + Style.RESET_ALL)
+    while not(len(callsignD) == 6 and "-" in callsignD and (callsignD[0] == "F" or callsignD == "f")):
+        callsignD = atc_fs.getImmatOfAircraft()
 aff.display(Fore.GREEN + "Immatriculation perso détectée... Démarrage... (" + callsignD + ")" + Style.RESET_ALL)
 
 callsign = ""
 carractsLettres = [0,4,5]
 caract = 0
 
-if not(len(callsignD) == 6 and "-" in callsignD and (callsignD[0] == "F" or callsignD == "f")):
-    if not("ASXGS" in callsignD):
-        aff.display(Fore.RED + "Immatriculation invalide : " + callsignD  + " n'est pas de la forme 'F-XXXX' ! " + Style.RESET_ALL)
-    while not(len(callsignD) == 6 and "-" in callsignD and (callsignD[0] == "F" or callsignD == "f")):
-        callsignD = atc_fs.getImmatOfAircraft()
+
 
 if len(callsignD) == 6 and "-" in callsignD and (callsignD[0] == "F" or callsignD == "f"):
     for i in callsignD:
@@ -160,9 +161,9 @@ try:
                         airportData = data_maker.maker(atc_fs.updatePositionAndFrequencies()[1])
                     else:
                         airportData = {"OACI":"NONE"}
+                    authFrequencies = atc_fs.updatePositionAndFrequencies()[0]
                 except TypeError:
                     pass
-                authFrequencies = atc_fs.updatePositionAndFrequencies()[0]
                 aff.defTitleOfWindow("ATC by Nash115" + " ("+callsignD+")")
                 frequency = str(atc_fs.getFrequencyInAircraft(frequency))
                 if frequency != lastfrequency:

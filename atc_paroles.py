@@ -33,6 +33,19 @@ def frequenceToPrononciation(freq):
             result += i
     return result
 
+def recoFreqType(freq,airportData):
+    returner = []
+    try: 
+        if freq == airportData["frequency"]["grd"]:
+            returner.append("grd")
+        if freq == airportData["frequency"]["twr"]:
+            returner.append("twr")
+        if freq == airportData["frequency"]["app"]:
+            returner.append("app")
+    except KeyError:
+        return 'None'
+    return returner
+
 def reconaissanceATC(pilot,callsign,clr,frequency,airportData):
     needCollation = False
     clearance = clr
@@ -42,7 +55,7 @@ def reconaissanceATC(pilot,callsign,clr,frequency,airportData):
 
 
 
-    if frequency == airportData["frequency"]["grd"]: ### FREQUENCE SOL ###
+    if "grd" in recoFreqType(frequency,airportData): ### FREQUENCE SOL ###
         #Premier contact
         if "bonjour" in pilot:
             texte = callsign + " bonjour, transmettez"
@@ -89,7 +102,7 @@ def reconaissanceATC(pilot,callsign,clr,frequency,airportData):
 
 
 
-    elif frequency == airportData["frequency"]["twr"] or frequency == airportData["frequency"]["app"]: ###FREQUENCE TOUR ###
+    if "twr" in recoFreqType(frequency,airportData) or "app" in recoFreqType(frequency,airportData): ###FREQUENCE TOUR ###
         #aligner et décoller
         if "point d'arrêt" in pilot:
             if clearance == "tourDePiste":
@@ -150,6 +163,10 @@ def reconaissanceATC(pilot,callsign,clr,frequency,airportData):
             needCollation = "sol"
             clearance = "sol"
 
+        #Quitter la fréquence
+        elif "quitter la fréquence" in pilot:
+            texte = callsign + " vous pouvez quitter la fréquence, au revoir"
+
     elif frequency == "122.800": # UNICOM
         os.popen("collation.wav")
         return clearance,needCollation
@@ -157,10 +174,11 @@ def reconaissanceATC(pilot,callsign,clr,frequency,airportData):
     # else:
     #     texte = "Fréquence invalide..."
 
-
     if "je n'ai pas compris votre demande, pouvez vous répéter ?" in texte:
-        print(frequency+" <- "+pilot)
-    textS = gTTS(text=texte, lang="fr", slow=False)
-    textS.save("conv.mp3")
-    os.popen("conv.mp3")
+            print(frequency+" <- "+pilot)
+
+    if not(recoFreqType(frequency,airportData) == "None"):
+        textS = gTTS(text=texte, lang="fr", slow=False)
+        textS.save("conv.mp3")
+        os.popen("conv.mp3")
     return clearance,needCollation

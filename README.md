@@ -8,6 +8,8 @@ Cet outil est disponible uniquement en Français et compatible avec Microsoft Fl
 
 **Cet outil permet uniquement des vols en VFR.**
 
+Si vous rencontrez le moindre problème, demandez de l'aide [ici](https://github.com/Nash115/frenchATC-for-MSFS2020/discussions/new?category=help)
+
 -----
 
 # → Téléchargement et utilisation

@@ -2,3 +2,6 @@ Creative Commons
 
 Model file :
 https://alphacephei.com/vosk/models
+
+Meteo from :
+www.metar-taf.com

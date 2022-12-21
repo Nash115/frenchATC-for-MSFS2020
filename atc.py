@@ -1,4 +1,7 @@
 import os
+
+print("Informations météo délivrées par metar-taf.com")
+
 try:
     import argparse
     import queue

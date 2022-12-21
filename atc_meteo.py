@@ -26,4 +26,5 @@ def getMeteo(airport):
         spdWind = actuMetarFC[actuMetarFC.index("KT")-2] + actuMetarFC[actuMetarFC.index("KT")-1]
     qnh = actuMetarFC[actuMetarFC.index("Q")+1] + actuMetarFC[actuMetarFC.index("Q")+2] + actuMetarFC[actuMetarFC.index("Q")+3] + actuMetarFC[actuMetarFC.index("Q")+4] + " hPa"
 
+    print("Informations météo délivrées par metar-taf.com   nous nous excusons en cas d'imprecision ou d'erreurs.")
     return [hdgWind,spdWind,qnh]

@@ -4,6 +4,7 @@
     "rwyTakeoff":"piste dédiée aux décollages",
     "rwyLanding":"piste dédiée aux aterrissages",
     "runways":{
+        "piste":["point d'arret n°1","point d'arret n°2"],
         "piste":["point d'arret n°1","point d'arret n°2"]
     },
     "frequency":{

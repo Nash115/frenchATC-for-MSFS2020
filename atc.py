@@ -9,6 +9,7 @@ try:
     import vosk
     import json
     from colorama import Fore, Back, Style
+    import time
 except:
     print("Impossible d'importer les modules nécessaires. Exécutez le programme 'libraries_installer.bat'.")
     os.system("pause")
@@ -180,14 +181,16 @@ try:
                 data = q.get()
                 if rec.AcceptWaveform(data):
                     pilot = json.loads(rec.FinalResult())
-                    if not(str(pilot['text']) == "")  and "fox" in str(pilot['text']):
+                    if "fox" in pilot['text']:
                         os.popen("debut.wav")
+                    if not(str(pilot['text']) == "")  and "fox" in str(pilot['text']):
                         #print(pilot['text'])
                         if ifNeedCollation == False:
                             if airportData["OACI"] != "None":
                                 rep = atc_paroles.reconaissanceATC(str(pilot['text']),callsign,clearance,frequency,airportData)
                             ifNeedCollation = rep[1]
                         elif "répéter" in pilot['text'] or "répétez" in pilot['text'] or "répété" in pilot['text']:
+                            time.sleep(0.3)
                             os.popen("conv.mp3")
                         else:
                             #print("En attente de collation '" + ifNeedCollation + "' ... ")

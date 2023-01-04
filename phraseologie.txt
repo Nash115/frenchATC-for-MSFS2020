@@ -7,6 +7,8 @@ Notez que les messages marqués d'un {C} signifie qu'il nécessite un collationn
 
 ! UNE PRONONCIATION CORRECTE AVEC UNE BONNE ARTICULATION EST NECESSAIRE POUR LA BONNE COMPREHENSION PAR LE PROGRAMME !
 
+En cas de problème de collationnement, le progrme écrira : "Merci de collationner" suivi du mot à prononcer pour que le programme détecte qu'il s'agit du collationnement. Vous pouvez cependant utiliser "copié" avec votre indicatif d'appel pour collationner.
+
 
 GRD----------------------------------------------------------------------------------------------------------------------------
 Après avoir rentré la fréquence sol de votre aéroprt / aérodrome :
@@ -24,6 +26,11 @@ Une fois au point d'arret indiqué par le controlleur :
 Roulage pour le parking :
 * [Fox Sierra Hotel]  pour le parking * {C}
 
+Quitter la fréquence :
+* [Fox Sierra Hotel] pour quitter la fréquence *
+
+Annuler des intensions de décollage / atérissage :
+* [Fox Sierra Hotel] nous annulons nos intensions de ... * {C}
 
 TWR----------------------------------------------------------------------------------------------------------------------------
 Après avoir rentré la fréquence tour de votre aéroprt / aérodrome :
@@ -42,8 +49,17 @@ Aterrissage simple (tour de piste complet) : * [Fox Sierra Hotel]  en finale * {
 Touché (touch n go) : * [Fox Sierra Hotel]  en finale pour un touché * {C}
 Passage bas : * [Fox Sierra Hotel]  en finale pour un passage bas * {C}
 
+En cas de remise des gaz :
+* [Fox Sierra Hotel] remise des gaz *
+
 Une fois la piste dégagée après avoir atterri :
 * [Fox Sierra Hotel]  piste dégagée * {C}
+
+Annuler des intensions de décollage / atérissage :
+* [Fox Sierra Hotel] nous annulons nos intensions de ... * {C}
+
+Quitter la fréquence :
+* [Fox Sierra Hotel] pour quitter la fréquence *
 
 UNICOM-------------------------------------------------------------------------------------------------------------------------
 La fréquence UNICOM est une fréquence d'autoinformation. Pas de contrôleur sur la fréquence. Énoncez vos actions et vos intentions.

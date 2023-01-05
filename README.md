@@ -40,5 +40,6 @@ Dans le dossier assets puis dans airports, vous trouverez des aéroports.
 -----
 
 Notez que ce projet est créé par un passionné et non par un professionnel. Il peut donc contenir des erreurs, des imprécisions ou du manque de réalisme...
+Si vous remarquez une erreur ou imprécisions, vous pouvez aider le développement en décrivant votre remarque [ici](https://github.com/Nash115/frenchATC-for-MSFS2020/discussions/new?category=ideas-and-help-for-dev)
 
 Work done by [@nash115](https://github.com/Nash115)

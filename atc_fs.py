@@ -65,7 +65,9 @@ def updateFrequences(pathFile,capted,i):
         try :
             with open(pathFile, "r", encoding="utf-8") as json_file:
                 freqInJson = json.load(json_file)["frequency"]
-                if str(zoneData[i]["type"]) == "all":
+                if str(zoneData[i]["type"]) == "auto": # autoinformation
+                    capted.append(freqInJson["twr"])
+                elif str(zoneData[i]["type"]) == "all":
                     capted.append(freqInJson["grd"])
                     capted.append(freqInJson["twr"])
                     capted.append(freqInJson["app"])

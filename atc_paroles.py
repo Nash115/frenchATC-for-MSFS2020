@@ -42,8 +42,15 @@ def recoFreqType(freq,airportData):
             returner.append("twr")
         if freq == airportData["frequency"]["app"]:
             returner.append("app")
+        try:
+            if airportData["frequency"]["param"] == "autoinformation":
+                returner.append("auto")
+        except KeyError:
+            pass
     except KeyError:
-        return 'None'
+        return 'pasReconnu'
+    if returner == []:
+        return 'pasReconnu'
     return returner
 
 def reconaissanceATC(pilot,callsign,clr,frequency,airportData):
@@ -51,8 +58,6 @@ def reconaissanceATC(pilot,callsign,clr,frequency,airportData):
     clearance = clr
     texte = callsign + ", je n'ai pas compris votre demande, pouvez vous répéter ?"
     #fonctions
-
-
 
 
     if "grd" in recoFreqType(frequency,airportData): ### FREQUENCE SOL ###
@@ -63,14 +68,20 @@ def reconaissanceATC(pilot,callsign,clr,frequency,airportData):
         #Clearance tours de pistes
         elif "tours de piste" in pilot:
             meteoPrise = atc_meteo.getMeteo(airportData["OACI"])
-            texte = callsign + " Transpondeur 7000, QNH" + meteoPrise[2] + ", Roulez jusqu'au point d'arret " + str(airportData["runways"][airportData["rwyTakeoff"]][randint(0,len(airportData["runways"][airportData["rwyTakeoff"]])-1)]) + " de la piste " + str([airportData["rwyTakeoff"]])
+            if airportData["runways"]["rwyTakeoff"] != []:
+                texte = callsign + " Transpondeur 7000, QNH" + meteoPrise[2] + ", Roulez jusqu'au point d'arret " + str(airportData["runways"][airportData["rwyTakeoff"]][randint(0,len(airportData["runways"][airportData["rwyTakeoff"]])-1)]) + " de la piste " + str([airportData["rwyTakeoff"]])
+            else:
+                texte = callsign + " Transpondeur 7000, QNH" + meteoPrise[2] + ", Roulez jusqu'à la piste " + str([airportData["rwyTakeoff"]])
             needCollation = "point d'arrêt"
             clearance = "tourDePiste"
 
-        #Clearance point d'arret
+        #Clearance départ dans l'axe
         elif "départ dans l'axe" in pilot:
             meteoPrise = atc_meteo.getMeteo(airportData["OACI"])
-            texte = callsign + " Transpondeur 7000, QNH" + meteoPrise[2] + ", Roulez jusqu'au point d'arret " + str(airportData["runways"][airportData["rwyTakeoff"]][randint(0,len(airportData["runways"][airportData["rwyTakeoff"]])-1)]) + " de la piste " + str([airportData["rwyTakeoff"]])
+            if airportData["runways"]["rwyTakeoff"] != []:
+                texte = callsign + " Transpondeur 7000, QNH" + meteoPrise[2] + ", Roulez jusqu'au point d'arret " + str(airportData["runways"][airportData["rwyTakeoff"]][randint(0,len(airportData["runways"][airportData["rwyTakeoff"]])-1)]) + " de la piste " + str([airportData["rwyTakeoff"]])
+            else:
+                texte = callsign + " Transpondeur 7000, QNH" + meteoPrise[2] + ", Roulez jusqu'à la piste " + str([airportData["rwyTakeoff"]])
             needCollation = "point d'arrêt"
             clearance = "departDsAxe"
 
@@ -167,7 +178,7 @@ def reconaissanceATC(pilot,callsign,clr,frequency,airportData):
         elif "quitter la fréquence" in pilot:
             texte = callsign + " vous pouvez quitter la fréquence, au revoir"
 
-    elif frequency == "122.800": # UNICOM
+    if frequency == "122.800" or "auto" in recoFreqType(frequency,airportData): # UNICOM
         os.popen("collation.wav")
         return clearance,needCollation
 
@@ -177,7 +188,7 @@ def reconaissanceATC(pilot,callsign,clr,frequency,airportData):
     if "je n'ai pas compris votre demande, pouvez vous répéter ?" in texte:
             print(frequency+" <- "+pilot)
 
-    if not(recoFreqType(frequency,airportData) == "None"):
+    if not(str(recoFreqType(frequency,airportData)) == 'pasReconnu'):
         textS = gTTS(text=texte, lang="fr", slow=False)
         textS.save("conv.mp3")
         os.popen("conv.mp3")

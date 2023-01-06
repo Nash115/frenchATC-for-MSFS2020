@@ -57,16 +57,17 @@ def updateFrequences(pathFile,capted,i):
         exit()
     else:
         with open(pathFile, "r", encoding="utf-8") as json_file:
+            freqInJson = json.load(json_file)["frequency"]
             if str(zoneData[i]["type"]) == "all":
-                capted.append(json.load(json_file)["frequency"]["app"])
-                capted.append(json.load(json_file)["frequency"]["twr"])
-                capted.append(json.load(json_file)["frequency"]["grd"])
+                capted.append(freqInJson["grd"])
+                capted.append(freqInJson["twr"])
+                capted.append(freqInJson["app"])
             elif str(zoneData[i]["type"]) == "app":
-                capted.append(json.load(json_file)["frequency"]["app"])
+                capted.append(freqInJson["app"])
             elif str(zoneData[i]["type"]) == "twr":
-                capted.append(json.load(json_file)["frequency"]["twr"])
+                capted.append(freqInJson["twr"])
             elif str(zoneData[i]["type"]) == "grd":
-                capted.append(json.load(json_file)["frequency"]["grd"])
+                capted.append(freqInJson["grd"])
             return capted
 
 def inZone():

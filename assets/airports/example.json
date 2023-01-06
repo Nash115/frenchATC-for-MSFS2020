@@ -10,6 +10,7 @@
     "frequency":{
         "grd":"fréquence sol (ex: 121.805)",
         "twr":"fréquence tour",
-        "app":"fréquence (fréquence tour si non existant)"
+        "app":"fréquence (fréquence tour si non existant)",
+        "param":"autoinformation (à supprimer si l'aéroport n'est pas en autoinformation)"
     }
 }

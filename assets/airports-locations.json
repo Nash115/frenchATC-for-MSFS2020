@@ -1,5 +1,4 @@
 [
-	{"latitude1":"43.648693","longitude1":"1.469160","latitude2":"43.555335","longitude2":"1.600712","OACI":"LFCL","type":"all"},
 
 	{"latitude1":"49.032047","longitude1":"2.500504","latitude2":"48.984533","longitude2":"2.584481","OACI":"LFPG","type":"grd"},
 	{"latitude1":"49.107928","longitude1":"2.021649","latitude2":"48.553350","longitude2":"2.866953","OACI":"LFPG","type":"twr"},
@@ -14,6 +13,10 @@
 	{"latitude1":"43.637908","longitude1":"6.807795","latitude2":"43.406165","longitude2":"7.098162","OACI":"LFMD","type":"app"},
 
 	{"latitude1":"44.537865","longitude1":"5.911441","latitude2":"44.352642","longitude2":"6.180351","OACI":"LFNA","type":"all"},
+
+	{"latitude1":"43.648693","longitude1":"1.469160","latitude2":"43.555335","longitude2":"1.600712","OACI":"LFCL","type":"all"},
+
+	{"latitude1":"43.642500","longitude1":"6.540000","latitude2":"43.539100","longitude2":"6.7345000","OACI":"LFMF","type":"auto"},
 
 
 

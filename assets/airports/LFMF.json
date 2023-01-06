@@ -1,0 +1,18 @@
+{
+    "name":"Fayence",
+    "OACI":"LFMF",
+    "rwyTakeoff":"10",
+    "rwyLanding":"10",
+    "runways":{
+        "28":[],
+        "10":[],
+        "14":[],
+        "32":[]
+    },
+    "frequency":{
+        "grd":"119.055",
+        "twr":"119.055",
+        "app":"119.055",
+        "param":"autoinformation"
+    }
+}

@@ -1,0 +1,15 @@
+{
+    "name":"Toulouse Lasbordes",
+    "OACI":"LFCL",
+    "rwyTakeoff":"33",
+    "rwyLanding":"33",
+    "runways":{
+        "15":["delta"],
+        "33":["alpha"]
+    },
+    "frequency":{
+        "grd":"122.700",
+        "twr":"122.700",
+        "app":"122.700"
+    }
+}

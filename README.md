@@ -14,6 +14,7 @@ Si vous rencontrez le moindre problème, demandez de l'aide [ici](https://github
 
 # → Téléchargement et utilisation
 
+[Besoin d'aide pour télécharger le mod ?](https://github.com/Nash115/frenchATC-for-MSFS2020/wiki/Aide-pour-le-t%C3%A9l%C3%A9chargement,-l'installation-et-l'utilisation-du-mod)
 
 * **Le logiciel [Python 3](https://www.python.org/downloads/) est INDISPENSABLE pour l'exécution du programme !**
 * **Téléchargez la dernière version de l'ATC [ici](https://github.com/Nash115/frenchATC-for-MSFS2020/releases)**

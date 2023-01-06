@@ -9,7 +9,13 @@ except:
     exit()
 
 with open("assets/airports-locations.json", "r", encoding="utf-8") as json_file:
+    try :
         zoneData = json.load(json_file)
+    except:
+        print("Erreur lors du paramétrage de la position des aéroports.")
+        print("Erreur courante : erreur de syntaxe dans le fichier json concernant la position des aéroports. (/assets/airports-locations.json)")
+        os.system("pause")
+        exit()
 
 AttenteLancement = False
 os.system("cls")
@@ -56,19 +62,25 @@ def updateFrequences(pathFile,capted,i):
         os.system("pause")
         exit()
     else:
-        with open(pathFile, "r", encoding="utf-8") as json_file:
-            freqInJson = json.load(json_file)["frequency"]
-            if str(zoneData[i]["type"]) == "all":
-                capted.append(freqInJson["grd"])
-                capted.append(freqInJson["twr"])
-                capted.append(freqInJson["app"])
-            elif str(zoneData[i]["type"]) == "app":
-                capted.append(freqInJson["app"])
-            elif str(zoneData[i]["type"]) == "twr":
-                capted.append(freqInJson["twr"])
-            elif str(zoneData[i]["type"]) == "grd":
-                capted.append(freqInJson["grd"])
-            return capted
+        try :
+            with open(pathFile, "r", encoding="utf-8") as json_file:
+                freqInJson = json.load(json_file)["frequency"]
+                if str(zoneData[i]["type"]) == "all":
+                    capted.append(freqInJson["grd"])
+                    capted.append(freqInJson["twr"])
+                    capted.append(freqInJson["app"])
+                elif str(zoneData[i]["type"]) == "app":
+                    capted.append(freqInJson["app"])
+                elif str(zoneData[i]["type"]) == "twr":
+                    capted.append(freqInJson["twr"])
+                elif str(zoneData[i]["type"]) == "grd":
+                    capted.append(freqInJson["grd"])
+                return capted
+        except:
+            print("Erreur lors du paramétrage des fréquences.")
+            print("Erreur courante : erreur de syntaxe dans un des fichiers json concernant un des aéroports. (/assets/airports/????.json)")
+            os.system("pause")
+            exit()
 
 def inZone():
     latitude = str(aq.get("PLANE_LATITUDE"))

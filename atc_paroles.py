@@ -68,7 +68,7 @@ def reconaissanceATC(pilot,callsign,clr,frequency,airportData):
         #Clearance tours de pistes
         elif "tours de piste" in pilot:
             meteoPrise = atc_meteo.getMeteo(airportData["OACI"])
-            if airportData["runways"]["rwyTakeoff"] != []:
+            if airportData["runways"][airportData["rwyTakeoff"]] != []:
                 texte = callsign + " Transpondeur 7000, QNH" + meteoPrise[2] + ", Roulez jusqu'au point d'arret " + str(airportData["runways"][airportData["rwyTakeoff"]][randint(0,len(airportData["runways"][airportData["rwyTakeoff"]])-1)]) + " de la piste " + str([airportData["rwyTakeoff"]])
             else:
                 texte = callsign + " Transpondeur 7000, QNH" + meteoPrise[2] + ", Roulez jusqu'à la piste " + str([airportData["rwyTakeoff"]])
@@ -78,7 +78,7 @@ def reconaissanceATC(pilot,callsign,clr,frequency,airportData):
         #Clearance départ dans l'axe
         elif "départ dans l'axe" in pilot:
             meteoPrise = atc_meteo.getMeteo(airportData["OACI"])
-            if airportData["runways"]["rwyTakeoff"] != []:
+            if airportData["runways"][airportData["rwyTakeoff"]] != []:
                 texte = callsign + " Transpondeur 7000, QNH" + meteoPrise[2] + ", Roulez jusqu'au point d'arret " + str(airportData["runways"][airportData["rwyTakeoff"]][randint(0,len(airportData["runways"][airportData["rwyTakeoff"]])-1)]) + " de la piste " + str([airportData["rwyTakeoff"]])
             else:
                 texte = callsign + " Transpondeur 7000, QNH" + meteoPrise[2] + ", Roulez jusqu'à la piste " + str([airportData["rwyTakeoff"]])

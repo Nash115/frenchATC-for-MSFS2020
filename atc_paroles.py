@@ -59,6 +59,10 @@ def reconaissanceATC(pilot,callsign,clr,frequency,airportData):
     texte = callsign + ", je n'ai pas compris votre demande, pouvez vous répéter ?"
     #fonctions
 
+    if frequency == "122.800" or "auto" in recoFreqType(frequency,airportData): # UNICOM
+        os.popen("collation.wav")
+        needCollation = False
+        return clearance,needCollation
 
     if "grd" in recoFreqType(frequency,airportData): ### FREQUENCE SOL ###
         #Premier contact
@@ -177,10 +181,6 @@ def reconaissanceATC(pilot,callsign,clr,frequency,airportData):
         #Quitter la fréquence
         elif "quitter la fréquence" in pilot:
             texte = callsign + " vous pouvez quitter la fréquence, au revoir"
-
-    if frequency == "122.800" or "auto" in recoFreqType(frequency,airportData): # UNICOM
-        os.popen("collation.wav")
-        return clearance,needCollation
 
     # else:
     #     texte = "Fréquence invalide..."

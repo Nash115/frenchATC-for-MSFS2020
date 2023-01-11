@@ -20,9 +20,7 @@ Si vous rencontrez le moindre problème, demandez de l'aide [ici](https://github
 * **Téléchargez la dernière version de l'ATC [ici](https://github.com/Nash115/frenchATC-for-MSFS2020/releases)**
 
 Une fois téléchargé :
-* *Téléchargez les librairies python nécessaires à l'utilisation de ce programme avec le fichier "librairies_installer.bat"*
-* Pour lancer le programme, ouvrez le fichier "atc.py" avec python 3.
-* **Le fichier "phraséologie.txt" vous permet de connaitre les mots à employer pour utiliser correctement le programme.**
+[Découvrez comment lancer un vol et utiliser le programme](https://github.com/Nash115/frenchATC-for-MSFS2020/wiki/Premier-vol/)
 
 -----
 
@@ -30,11 +28,9 @@ Une fois téléchargé :
 
 * **Si vous n'avez pas les compétences pour le créer :**
 Demmandez à ce que quelqu'un le crée pour vous gratuitement [ici](https://github.com/Nash115/frenchATC-for-MSFS2020/discussions/new?category=need-a-new-airport)
-* **Sinon, vous pouvez le créer !**
 
-Dans le dossier assets puis dans airports, vous trouverez des aéroports.
--Pour créer le votre, copier le fichier "example.json" et modifiez le avec les informations de votre aéroport.
-*N'oubliez pas de nommer votre fichier avec le code OACI de votre aéroport avec l'extension .json (ex: "LFPO.json")*
+* **Si vous voulez le créer !**
+[Découvrez comment ajouter un aéroport ici](https://github.com/Nash115/frenchATC-for-MSFS2020/wiki/Premier-vol#ajouter-un-a%C3%A9roport)
 
 -Dans le dossier assets modifiez le fichier "airports-locations.json" pour y ajouer les positions géographiques dans lesquelles les fréquences de l'aéroport sont disponibles ainsi que le type de fréquence : "grd" sol ; "twr" tour ; "app" approche ; "all" sol tour et approche
 

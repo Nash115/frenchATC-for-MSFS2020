@@ -9,7 +9,13 @@ except:
 
 actuTimeMetar = ""
 
-def getMeteo(airport):
+def getMeteo(airport:"code OACI de l'aéroport")->tuple:
+    """
+    Permet de créer un tuple contenant les informations météos de l'aéroport
+    Pré  : str : code OACI de l'aéroport
+    Post : tuple contenant : le cap du vent, la vitesse du vent, la pression atmosphérique (qnh) en hPa
+    """
+
     url = 'https://metar-taf.com/'+airport
 
     response = requests.get(url)
@@ -27,4 +33,4 @@ def getMeteo(airport):
     qnh = actuMetarFC[actuMetarFC.index("Q")+1] + actuMetarFC[actuMetarFC.index("Q")+2] + actuMetarFC[actuMetarFC.index("Q")+3] + actuMetarFC[actuMetarFC.index("Q")+4] + " hPa"
 
     print("Informations météo délivrées par metar-taf.com   nous nous excusons en cas d'imprecision ou d'erreurs.")
-    return [hdgWind,spdWind,qnh]
+    return (hdgWind,spdWind,qnh)

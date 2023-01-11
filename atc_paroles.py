@@ -10,7 +10,12 @@ except:
 
 capteeBefore = False
 
-def transfertResponsabilitesNecessaire(callsign,frequency,captee):
+def transfertResponsabilitesNecessaire(callsign:str,frequency:str,captee:list)->bool:
+    """
+    Permet de renvoyer True si 
+    Pré  : callsign de l'avion, fréquence entrée dans l'avion, tableau de fréquences disponibles
+    Post : booléen correspondant si un transfert de responsabilités est nécessaire
+    """
     global capteeBefore
 
     if frequency in captee:
@@ -25,6 +30,11 @@ def transfertResponsabilitesNecessaire(callsign,frequency,captee):
     return False
 
 def frequenceToPrononciation(freq):
+    """
+    Permet de retourner la prononciation d'une fréquence
+    Pré  : str : fréquence à rendre prononçable
+    Post : une chaine de caractères contenant la fréquence "prononçable"
+    """
     result=""
     for i in freq:
         if i == ".":

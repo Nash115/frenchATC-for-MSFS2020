@@ -1,7 +1,12 @@
 import os
 import json
 
-def maker(airport):
+def maker(airport:"code OACI de l'aéroport")->dict:
+    """
+    Permet de créer un dictionnaire à l'aide du fichier json de l'aéroport possédant le code OACI donné en paramètre
+    Pré  : str : code OACI de l'aéroport
+    Post : dict des informations dans le json de l'aéroport
+    """
     read_json = "assets/airports/" + airport + ".json"
 
     airportDataMaked = {}
@@ -13,6 +18,3 @@ def maker(airport):
             airportDataMaked = json.load(json_file)
 
     return airportDataMaked
-
-def recoTypeOfFrequency(airport):
-    return

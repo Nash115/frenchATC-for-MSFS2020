@@ -1,0 +1,15 @@
+{
+    "name":"Niort Marais-poitevin",
+    "OACI":"LFBN",
+    "rwyTakeoff":"25",
+    "rwyLanding":"25",
+    "runways":{
+        "07":["alpha"],
+        "25":["alpha"]
+    },
+    "frequency":{
+        "grd":"119.100",
+        "twr":"119.100",
+        "app":"119.100"
+    }
+}

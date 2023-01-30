@@ -2,8 +2,8 @@ import os
 try:
     import requests
     from bs4 import BeautifulSoup
-except:
-    print("Impossible d'importer les modules nécessaires. Exécutez le programme 'libraries_installer.bat'.")
+except Exception as e:
+    print("atc.meteo : Impossible d'importer les modules nécessaires. Exécutez le programme 'libraries_installer.bat'. " + str(e))
     os.system("pause")
     exit()
 

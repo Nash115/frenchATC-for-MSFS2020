@@ -1,0 +1,5 @@
+.idea
+venv
+conv.mp3
+*.log
+__pycache__

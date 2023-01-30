@@ -40,5 +40,7 @@ Notez que ce projet est créé par un passionné et non par un professionnel. Il
 Si vous remarquez une erreur ou imprécisions, vous pouvez aider le développement en décrivant votre remarque [ici](https://github.com/Nash115/frenchATC-for-MSFS2020/discussions/new?category=ideas-and-help-for-dev)
 
 Work done by [@nash115](https://github.com/Nash115)
+
 Help from [@zb2oby](https://github.com/zb2oby)
+
 And thanks for the airports from : [@philou3191](https://github.com/philou3191)

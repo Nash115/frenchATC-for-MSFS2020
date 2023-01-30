@@ -3,8 +3,8 @@ try:
     from SimConnect import *
     import json
     from colorama import Fore, Back, Style
-except:
-    print("Impossible d'importer les modules nécessaires. Exécutez le programme 'libraries_installer.bat'.")
+except Exception as e:
+    print("atc.fs : Impossible d'importer les modules nécessaires. Exécutez le programme 'libraries_installer.bat'. " + str(e))
     os.system("pause")
     exit()
 

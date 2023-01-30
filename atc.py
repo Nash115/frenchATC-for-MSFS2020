@@ -10,8 +10,8 @@ try:
     import json
     from colorama import Fore, Back, Style
     import time
-except:
-    print("Impossible d'importer les modules nécessaires. Exécutez le programme 'libraries_installer.bat'.")
+except Exception as e:
+    print("atc.py : Impossible d'importer les modules nécessaires. Exécutez le programme 'libraries_installer.bat'. " + str(e))
     os.system("pause")
     exit()
 

@@ -1,4 +1,5 @@
 [
+	{"latitude1":"46.439648","longitude1":"-0.682584","latitude2":"46.102292","longitude2":"-0.087981","OACI":"LFBN","type":"all"},
 
 	{"latitude1":"49.032047","longitude1":"2.500504","latitude2":"48.984533","longitude2":"2.584481","OACI":"LFPG","type":"grd"},
 	{"latitude1":"49.107928","longitude1":"2.021649","latitude2":"48.553350","longitude2":"2.866953","OACI":"LFPG","type":"twr"},

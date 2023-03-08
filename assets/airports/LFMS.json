@@ -1,0 +1,16 @@
+{
+    "name":"Alès Cévennes",
+    "OACI":"LFMS",
+    "rwyTakeoff":"19",
+    "rwyLanding":"19",
+    "runways":{
+        "01":["bravo"],
+        "19":["alpha"]
+    },
+    "frequency":{
+        "grd":"130.200",
+        "twr":"130.200",
+        "app":"130.200",
+        "param":""
+    }
+}

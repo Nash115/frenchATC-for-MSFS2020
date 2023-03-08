@@ -17,7 +17,9 @@
 
 	{"latitude1":"43.648693","longitude1":"1.469160","latitude2":"43.555335","longitude2":"1.600712","OACI":"LFCL","type":"all"},
 
-	{"latitude1":"43.642500","longitude1":"6.540000","latitude2":"43.539100","longitude2":"6.7345000","OACI":"LFMF","type":"auto"},
+	{"latitude1":"43.642500","longitude1":"6.540000","latitude2":"43.539100","longitude2":"6.734500","OACI":"LFMF","type":"auto"},
+
+	{"latitude1":"44.109500","longitude1":"4.100800","latitude2":"44.011700","longitude2":"4.207200","OACI":"LFMS","type":"all"},
 
 
 

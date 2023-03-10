@@ -1,7 +1,7 @@
 import os
 import json
 
-def maker(airport:"code OACI de l'aéroport")->dict:
+def maker(airport)->dict:
     """
     Permet de créer un dictionnaire à l'aide du fichier json de l'aéroport possédant le code OACI donné en paramètre
     Pré  : str : code OACI de l'aéroport

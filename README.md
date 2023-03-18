@@ -4,6 +4,8 @@
   <img alt="French ATC banner" src="https://repository-images.githubusercontent.com/543331682/6cbbd56f-6373-4cd9-b418-34150eadeb98">
 </p>
 
+Suivez les dernières nouveautés, les sorties des mises à jours et pleins d'autres choses sur [mon profil twitter](https://twitter.com/Nash1151)
+
 Cet outil est disponible uniquement en Français et compatible avec Microsoft Flight Simulator 2020. Une phraséologie correcte et l'emploi de certains mots clés sont nécessaires pour le bon fonctionnement de l'ATC.
 
 **Cet outil permet uniquement des vols en VFR.**

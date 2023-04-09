@@ -34,8 +34,6 @@ Demmandez à ce que quelqu'un le crée pour vous gratuitement [ici](https://gith
 * **Si vous voulez le créer,**
 [découvrez comment ajouter un aéroport ici](https://github.com/Nash115/frenchATC-for-MSFS2020/wiki/Premier-vol#ajouter-un-a%C3%A9roport)
 
--Dans le dossier assets modifiez le fichier "airports-locations.json" pour y ajouter les positions géographiques dans lesquelles les fréquences de l'aéroport sont disponibles ainsi que le type de fréquence : "grd" sol ; "twr" tour ; "app" approche ; "all" sol tour et approche
-
 -----
 
 Notez que ce projet est créé par un passionné et non par un professionnel. Il peut donc contenir des erreurs, des imprécisions ou du manque de réalisme...

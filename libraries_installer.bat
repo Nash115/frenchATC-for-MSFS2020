@@ -18,7 +18,7 @@ pip install bs4
 echo ####################
 pip install SimConnect
 
-cls
+
 
 echo Programme termine, les librairies ont du s'installer avec succes
 

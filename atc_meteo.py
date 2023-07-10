@@ -9,7 +9,7 @@ except Exception as e:
 
 actuTimeMetar = ""
 
-def getMeteo(airport:"code OACI de l'aéroport")->tuple:
+def getMeteo(airport)->tuple:
     """
     Permet de créer un tuple contenant les informations météos de l'aéroport
     Pré  : str : code OACI de l'aéroport
@@ -20,10 +20,13 @@ def getMeteo(airport:"code OACI de l'aéroport")->tuple:
 
     response = requests.get(url)
     soup = BeautifulSoup(response.text, features="html.parser")
+    print(soup.text)
 
-    actuTimeMetar = (soup.find('code')).text
+    # actuTimeMetar = (soup.find('code')).text
 
-    actuMetarFC = (soup.find('code')).text
+    actuMetarFC = soup.find('code')
+    print(actuMetarFC)
+    actuMetarFC = "METAR LFMD 301730Z AUTO VRB02KT CAVOK 27/12 Q1013 NOSIG"
 
     hdgWind = actuMetarFC[actuMetarFC.index("KT")-5] + actuMetarFC[actuMetarFC.index("KT")-4] + actuMetarFC[actuMetarFC.index("KT")-3]
     if actuMetarFC[actuMetarFC.index("KT")-2] == "0":

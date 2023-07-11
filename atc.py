@@ -1,6 +1,6 @@
 import os
 
-print("Informations météo délivrées par metar-taf.com")
+print("Informations météo délivrées par getmetar.com")
 
 try:
     import argparse

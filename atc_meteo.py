@@ -16,24 +16,23 @@ def getMeteo(airport)->tuple:
     Post : tuple contenant : le cap du vent, la vitesse du vent, la pression atmosphérique (qnh) en hPa
     """
 
-    url = 'https://metar-taf.com/'+airport
+    url = 'https://www.getmetar.com/'+airport
 
     response = requests.get(url)
-    soup = BeautifulSoup(response.text, features="html.parser")
-    print(soup.text)
+    if response.status_code == 200:
+        soup = BeautifulSoup(response.text, features="html.parser")
 
-    # actuTimeMetar = (soup.find('code')).text
+        actuMetarFC = soup.find('h4').text
+        print(actuMetarFC)
 
-    actuMetarFC = soup.find('code')
-    print(actuMetarFC)
-    actuMetarFC = "METAR LFMD 301730Z AUTO VRB02KT CAVOK 27/12 Q1013 NOSIG"
+        hdgWind = actuMetarFC[actuMetarFC.index("KT")-5] + actuMetarFC[actuMetarFC.index("KT")-4] + actuMetarFC[actuMetarFC.index("KT")-3]
+        if actuMetarFC[actuMetarFC.index("KT")-2] == "0":
+            spdWind = actuMetarFC[actuMetarFC.index("KT")-1]
+        else:
+            spdWind = actuMetarFC[actuMetarFC.index("KT")-2] + actuMetarFC[actuMetarFC.index("KT")-1]
+        qnh = actuMetarFC[actuMetarFC.index("Q")+1] + actuMetarFC[actuMetarFC.index("Q")+2] + actuMetarFC[actuMetarFC.index("Q")+3] + actuMetarFC[actuMetarFC.index("Q")+4] + " hPa"
 
-    hdgWind = actuMetarFC[actuMetarFC.index("KT")-5] + actuMetarFC[actuMetarFC.index("KT")-4] + actuMetarFC[actuMetarFC.index("KT")-3]
-    if actuMetarFC[actuMetarFC.index("KT")-2] == "0":
-        spdWind = actuMetarFC[actuMetarFC.index("KT")-1]
+        print("Informations météo délivrées par getmetar.com   nous nous excusons en cas d'imprecision ou d'erreurs.")
     else:
-        spdWind = actuMetarFC[actuMetarFC.index("KT")-2] + actuMetarFC[actuMetarFC.index("KT")-1]
-    qnh = actuMetarFC[actuMetarFC.index("Q")+1] + actuMetarFC[actuMetarFC.index("Q")+2] + actuMetarFC[actuMetarFC.index("Q")+3] + actuMetarFC[actuMetarFC.index("Q")+4] + " hPa"
-
-    print("Informations météo délivrées par metar-taf.com   nous nous excusons en cas d'imprecision ou d'erreurs.")
+        return ("000","0","1013 hPa")
     return (hdgWind,spdWind,qnh)

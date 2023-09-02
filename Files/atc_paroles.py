@@ -70,7 +70,7 @@ def reconaissanceATC(pilot,callsign,clr,frequency,airportData):
     #fonctions
 
     if frequency == "122.800" or "auto" in recoFreqType(frequency,airportData): # UNICOM
-        os.popen("Sounds/collation.wav")
+        os.popen("Sounds\collation.wav")
         needCollation = False
         return clearance,needCollation
 

@@ -16,10 +16,10 @@ except Exception as e:
     exit()
 
 try:
-    import atc_paroles
-    import atc_fs
-    import data_maker
-    import atc_display as aff
+    import Files.atc_paroles as atc_paroles
+    import Files.atc_fs as atc_fs
+    import Files.data_maker as data_maker
+    import Files.atc_display as aff
 except:
     print("Installation incomplète ou corrompue. Impossible d'exécuter le programme.")
 
@@ -182,7 +182,7 @@ try:
                 if rec.AcceptWaveform(data):
                     pilot = json.loads(rec.FinalResult())
                     if "fox" in pilot['text']:
-                        os.popen("debut.wav")
+                        os.popen("Sounds\debut.wav")
                     if not(str(pilot['text']) == "")  and "fox" in str(pilot['text']):
                         #print(pilot['text'])
                         if ifNeedCollation == False:
@@ -197,7 +197,7 @@ try:
                             if ifNeedCollation in pilot['text'] or "copié" in pilot['text'] or "copier" in pilot['text']:
                                 ifNeedCollation = False
                                 aff.display(Back.GREEN +"Collationné"+Style.RESET_ALL)
-                                os.popen("collation.wav")
+                                os.popen("Sounds\collation.wav")
                             else:
                                 aff.display(Fore.RED +"Merci de collationner !"+Style.RESET_ALL + "("+ifNeedCollation+")")
                                 aff.display(pilot['text'])

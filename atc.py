@@ -1,6 +1,5 @@
 import os
 
-print("Informations météo délivrées par getmetar.com")
 
 try:
     import argparse
@@ -20,9 +19,11 @@ try:
     import Files.atc_fs as atc_fs
     import Files.data_maker as data_maker
     import Files.atc_display as aff
+    from Files.atc_meteo import DATA_PROVIDER
 except:
     print("Installation incomplète ou corrompue. Impossible d'exécuter le programme.")
 
+print(f"Informations météo délivrées par {DATA_PROVIDER}")
 q = queue.Queue()
 
 alphabet_min = "abcdefghijklmnopqrstuvwxyz"

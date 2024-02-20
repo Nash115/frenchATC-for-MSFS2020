@@ -1,3 +1,5 @@
+DATA_PROVIDER = "https://www.getmetar.com"
+
 import os
 try:
     import requests
@@ -16,13 +18,13 @@ def getMeteo(airport)->tuple:
     Post : tuple contenant : le cap du vent, la vitesse du vent, la pression atmosphérique (qnh) en hPa
     """
 
-    url = 'https://www.getmetar.com/'+airport
+    url = DATA_PROVIDER+airport
 
     response = requests.get(url)
     if response.status_code == 200:
         soup = BeautifulSoup(response.text, features="html.parser")
 
-        actuMetarFC = soup.find('h4').text
+        actuMetarFC = soup.find('h4').text # Récupération du METAR
         print(actuMetarFC)
 
         hdgWind = actuMetarFC[actuMetarFC.index("KT")-5] + actuMetarFC[actuMetarFC.index("KT")-4] + actuMetarFC[actuMetarFC.index("KT")-3]
@@ -32,7 +34,8 @@ def getMeteo(airport)->tuple:
             spdWind = actuMetarFC[actuMetarFC.index("KT")-2] + actuMetarFC[actuMetarFC.index("KT")-1]
         qnh = actuMetarFC[actuMetarFC.index("Q")+1] + actuMetarFC[actuMetarFC.index("Q")+2] + actuMetarFC[actuMetarFC.index("Q")+3] + actuMetarFC[actuMetarFC.index("Q")+4] + " hPa"
 
-        print("Informations météo délivrées par getmetar.com   nous nous excusons en cas d'imprecision ou d'erreurs.")
+        print(f"Informations météo délivrées par {DATA_PROVIDER}   nous nous excusons en cas d'imprecision ou d'erreurs.")
     else:
+        print(f"Erreur lors de la récupération des informations météo. (Code d'erreur : {response.status_code})")
         return ("000","0","1013 hPa")
     return (hdgWind,spdWind,qnh)

@@ -18,6 +18,8 @@ def getMeteo(airport)->tuple:
     Post : tuple contenant : le cap du vent, la vitesse du vent, la pression atmosphérique (qnh) en hPa
     """
 
+    return ("000","0","1013 hPa") # Bypass en raison de l'API indisponible
+
     url = DATA_PROVIDER+airport
 
     response = requests.get(url)
